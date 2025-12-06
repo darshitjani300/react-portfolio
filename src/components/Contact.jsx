@@ -1,14 +1,16 @@
-import React from "react";
 import { TbMap2 } from "react-icons/tb";
 import { AiOutlineMail } from "react-icons/ai";
 
 const Contact = () => {
   return (
-    <div className="bg-white px-2 py-14 md:px-10 md:py-16 xl:px-52 xl:py-20">
-      <div className="flex flex-col md:flex-col md:items-start justify-center items-center gap-3 text-center pb-10">
+    <section
+      id="contact"
+      className="bg-white px-2 py-14 md:px-10 md:py-16 xl:px-52 xl:py-20"
+    >
+      <div className="flex flex-col md:flex-col md:items-start justify-center items-center gap-2 text-center pb-10">
         <h1 className="text-[1.1rem] font-bold text-[#147EFB]">CONTACT</h1>
         <h2 className="text-[1.6rem] font-bold leading-9">
-          Don't be shy! Hit me up! 👇
+          Feel free to reach out 👇
         </h2>
       </div>
       <div className="flex flex-col md:flex-row items-center md:text-start text-center gap-10 xl:gap-14 my-5">
@@ -20,7 +22,7 @@ const Contact = () => {
           <div className="flex flex-col gap-1">
             <h1 className="font-bold text-[1.1rem]">Location</h1>
             <p className="text-[1rem] cursor-pointer text-[#767676] hover:text-blue-500 duration-150 ease-in">
-              Ahmedabad, Gujarat
+              Ahmedabad, India
             </p>
           </div>
         </div>
@@ -40,7 +42,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

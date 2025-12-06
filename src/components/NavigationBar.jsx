@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const NavigationBar = () => {
   const [showNav, setShowNav] = useState(false);
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setShowNav(false);
+    }
+  };
+
   return (
-    <div className="shadow-md w-screen bg-white overflow-hidden fixed top-0 left-0 z-50 flex justify-between items-center p-6 md:px-10 lg:px-14 xl:px-16 mb-10">
+    <div className="shadow-md w-screen bg-white overflow-hidden fixed top-0 left-0 z-50 flex justify-between items-center p-6 md:px-8 lg:px-12 xl:px-14 mb-10">
       <h1 className="cursor-pointer font-bold text-[#2d2e32] text-[1.2rem] sm:text-[1.4rem] lg:text-[1.3rem]">
         Darshit.dev
       </h1>
@@ -39,16 +48,28 @@ const NavigationBar = () => {
       )}
 
       <ul className="hidden lg:text-[1.1rem] xl:text-[1rem] text-[#2d2e32] lg:flex font-semibold gap-5 pr-3">
-        <li className="cursor-pointer hover:text-[#147efb] ease-in-out duration-[0.4s]">
+        <li
+          onClick={() => scrollToSection("home")}
+          className="cursor-pointer hover:text-[#147efb] ease-in-out duration-[0.4s]"
+        >
           Home
         </li>
-        <li className="cursor-pointer hover:text-[#147efb] ease-in-out duration-[0.4s]">
+        <li
+          onClick={() => scrollToSection("about")}
+          className="cursor-pointer hover:text-[#147efb] ease-in-out duration-[0.4s]"
+        >
           About
         </li>
-        <li className="cursor-pointer hover:text-[#147efb] ease-in-out duration-[0.4s]">
+        <li
+          onClick={() => scrollToSection("project")}
+          className="cursor-pointer hover:text-[#147efb] ease-in-out duration-[0.4s]"
+        >
           Projects
         </li>
-        <li className="cursor-pointer hover:text-[#147efb] ease-in-out duration-[0.4s]">
+        <li
+          onClick={() => scrollToSection("contact")}
+          className="cursor-pointer hover:text-[#147efb] ease-in-out duration-[0.4s]"
+        >
           Contact
         </li>
       </ul>

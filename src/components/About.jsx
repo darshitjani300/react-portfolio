@@ -1,28 +1,29 @@
-import React from "react";
-
 const About = () => {
   return (
-    <div className="bg-white w-full py-5 lg:px-5 lg:py-20 xl:px-40 px-5">
+    <section
+      id="about"
+      className="bg-white w-full py-5 lg:px-5 lg:py-20 xl:px-40 px-5"
+    >
       <div className="py-12 flex items-center flex-col lg:grid lg:grid-cols-2 lg:justify-between">
         <div className="relative sm:h-[350px] 2xl:justify-self-center sm:w-[420px] px-3">
           <img
             src="main.png"
-            alt=""
+            alt="bg"
             loading="lazy"
             className="h-full w-full object-cover rounded-xl"
           />
           <div className="hidden sm:block absolute bottom-[-30px] right-[-55px]">
-            <div className="hidden sm:block bg-white h-[130px] w-[130px] z-[40] relative ml-10 rounded-[50%]">
+            <div className="hidden sm:block bg-white h-[135px] w-[135px] z-[40] relative ml-10 rounded-[50%]">
               <img
                 src="circle.png"
                 loading="lazy"
-                alt=""
-                className="absolute h-[130px] left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]"
+                alt="circle"
+                className="absolute h-[130px] left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] imageSpin"
               />
               <img
                 src="circleinn.png"
                 loading="lazy"
-                alt=""
+                alt="innerCircle"
                 className="absolute h-[60px] left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]"
               />
             </div>
@@ -33,21 +34,21 @@ const About = () => {
             ABOUT ME
           </h3>
           <h1 className="font-bold text-[#2d2e32] w-full text-[1.6rem] sm:px-3 lg:px-0 leading-9">
-            A dedicated Front-end Developer based in Ahmedabad, Gujarat 📍
+            A dedicated Full Stack Developer based in Ahmedabad, India 📍
           </h1>
           <p className="text-[1rem] text-[#767676]">
-            As a Junior Front-End Developer, I possess an impressive arsenal of
-            skills in HTML, CSS, JavaScript, Tailwind and React. I excel in
-            designing and maintaining responsive websites that offer a smooth
-            user experience. My expertise lies in crafting dynamic, engaging
-            interfaces through writing clean and optimized code and utilizing
-            cutting-edge development tools and techniques. I am also a team
-            player who thrives in collaborating with cross-functional teams to
-            produce outstanding web applications
+            As a Web Developer, I bring strong expertise in HTML, CSS,
+            JavaScript, Tailwind, and React, along with full-stack experience
+            using the MERN stack. I excel at designing and building responsive,
+            high-quality web applications that deliver smooth and engaging user
+            experiences. I focus on writing clean, optimized code and leveraging
+            modern development tools to create scalable, maintainable solutions.
+            I’m also a collaborative team player who enjoys turning ideas into
+            polished, functional products.
           </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
