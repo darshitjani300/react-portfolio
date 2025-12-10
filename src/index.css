@@ -18,7 +18,7 @@ body {
 }
 
 .imageSpin {
-  animation: spin 10s linear infinite;
+  animation: spin 8s linear infinite;
 }
 @keyframes spin {
   from {
@@ -28,4 +28,3 @@ body {
     transform: translate(-50%, -50%) rotate(360deg);
   }
 }
-

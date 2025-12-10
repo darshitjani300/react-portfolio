@@ -24,28 +24,29 @@ const Hero = () => {
             Full Stack Developer{" "}
           </h1>
           <p className="text-[#555] tracking-wide text-[1.1rem] font-[400]">
-            Hi, I'm Darshit Jani. A passionate Web Developer based in Ahmedabad,
-            India.
+            Hi, I'm Darshit Jani — a passionate Web Developer & Freelancer
+            helping businesses build fast, modern, and scalable digital
+            products.
           </p>
         </div>
         <div className="flex items-center justify-center w-full lg:justify-start gap-6">
           <a href="https://www.linkedin.com/in/darshit-jani/" target="_blank">
             <PiLinkedinLogoBold
-              size="1.8rem"
+              size="1.6rem"
               className="hover:text-[#147efb] ease-in-out cursor-pointer duration-[0.3s]"
             />
           </a>
 
           <a href="https://github.com/darshitjani300" target="_blank">
             <FiGithub
-              size="1.8rem"
+              size="1.6rem"
               className="hover:text-[#147efb] ease-in-out cursor-pointer duration-[0.3s]"
             />
           </a>
 
           <a href="https://x.com/darshit_life1" target="_blank">
             <RiTwitterXFill
-              size="1.8rem"
+              size="1.6rem"
               className="hover:text-[#147efb] ease-in-out cursor-pointer duration-[0.3s]"
             />
           </a>

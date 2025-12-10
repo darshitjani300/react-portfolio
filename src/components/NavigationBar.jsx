@@ -18,7 +18,10 @@ const NavigationBar = () => {
   return (
     <nav className="sticky h-20 top-0 left-0 w-full bg-white shadow-md z-50">
       <WrapperContainer classes="flex justify-between items-center py-6">
-        <h1 className="cursor-pointer font-bold text-[#2d2e32] text-[1.2rem] sm:text-[1.4rem] lg:text-[1.3rem]">
+        <h1
+          className="cursor-pointer font-bold text-[#2d2e32] text-[1.2rem] sm:text-[1.4rem] lg:text-[1.3rem]"
+          onClick={() => scrollToSection("home")}
+        >
           Darshit.dev
         </h1>
 
