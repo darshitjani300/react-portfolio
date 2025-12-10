@@ -12,8 +12,10 @@ function App() {
       <Hero />
       <About />
       <Projects />
-      <Contact />
-      <Footer />
+      <div className="flex flex-col min-h-[calc(100vh-80px)] justify-end">
+        <Contact />
+        <Footer />
+      </div>
     </>
   );
 }
