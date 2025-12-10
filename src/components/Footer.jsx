@@ -2,11 +2,12 @@ import { PiLinkedinLogoBold } from "react-icons/pi";
 import { FiGithub } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { RiTwitterXLine } from "react-icons/ri";
+import WrapperContainer from "../utils/WrapperContainer";
 
 const Footer = () => {
   return (
-    <section id="footer" className="w-full bg-[#2d2e32] px-2 sm:px-12 xl:px-52">
-      <div className="flex flex-col sm:flex-row justify-between gap-5 items-center text-center py-10">
+    <WrapperContainer id="footer" classes="w-full bg-[#2d2e32]">
+      <div className="flex flex-col sm:flex-row justify-between gap-5 items-center text-center py-6">
         <h1 className="text-white font-bold tracking-wide text-[1.1rem]">
           Copyright © 2026. All rights are reserved
         </h1>
@@ -34,7 +35,7 @@ const Footer = () => {
           </motion.a>
         </div>
       </div>
-    </section>
+    </WrapperContainer>
   );
 };
 

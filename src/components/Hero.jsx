@@ -2,12 +2,13 @@ import { PiLinkedinLogoBold } from "react-icons/pi";
 import { RiTwitterXFill } from "react-icons/ri";
 import { FiGithub } from "react-icons/fi";
 import { motion } from "framer-motion";
+import WrapperContainer from "../utils/WrapperContainer";
 
 const Hero = () => {
   return (
-    <section
+    <WrapperContainer
       id="home"
-      className="flex flex-col mt-20 lg:flex-row-reverse lg:items-start lg:justify-around lg:px-5 lg:py-20 xl:px-52 xl:justify-between items-center justify-center text-center lg:text-start px-5 xl:mt-32"
+      classes="min-h-[calc(100vh-80px)] scroll-mt-20 flex flex-col lg:flex-row-reverse lg:justify-around xl:justify-between items-center justify-center text-center lg:text-start"
     >
       <div className="h-[200px] w-[200px] lg:h-[320px] lg:w-[320px] my-5">
         <img
@@ -62,43 +63,30 @@ const Hero = () => {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <img
-                    src="https://skillicons.dev/icons?i=express"
-                    loading="lazy"
-                    className="h-[3rem] md:h-[3.2rem] cursor-pointer"
-                  />
-                </motion.li>
-                <motion.li
-                  whileHover={{ scale: 1.1, originX: 0 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className="relative"
-                >
-                  <img
-                    src="https://skillicons.dev/icons?i=mongodb"
-                    loading="lazy"
-                    className="h-[3rem] md:h-[3.2rem] cursor-pointer"
-                  />
-                </motion.li>
-                <motion.li
-                  whileHover={{ scale: 1.1, originX: 0 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <img
-                    src="https://skillicons.dev/icons?i=redux"
-                    className="h-[3rem] md:h-[3.2rem] cursor-pointer"
-                    loading="lazy"
-                  />
-                </motion.li>
-              </div>
-
-              <div className="flex items-center gap-5">
-                <motion.li
-                  whileHover={{ scale: 1.1, originX: 0 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <img
                     src="https://skillicons.dev/icons?i=js"
                     loading="lazy"
                     className="h-[3rem] md:h-[3.2rem] cursor-pointer"
+                  />
+                </motion.li>
+
+                <motion.li
+                  whileHover={{ scale: 1.1, originX: 0 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <img
+                    src="https://skillicons.dev/icons?i=ts"
+                    className="h-[3rem] md:h-[3.2rem] cursor-pointer"
+                    loading="lazy"
+                  />
+                </motion.li>
+                <motion.li
+                  whileHover={{ scale: 1.1, originX: 0 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <img
+                    src="https://skillicons.dev/icons?i=react"
+                    loading="lazy"
+                    className="h-[3rem] md:h-[3.2rem] cursor-pointe"
                   />
                 </motion.li>
                 <motion.li
@@ -111,6 +99,17 @@ const Hero = () => {
                     className="h-[3rem] md:h-[3.2rem] cursor-pointer"
                   />
                 </motion.li>
+
+                <motion.li
+                  whileHover={{ scale: 1.1, originX: 0 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <img
+                    src="https://skillicons.dev/icons?i=nodejs"
+                    className="h-[3rem] md:h-[3.2rem] cursor-pointer"
+                    loading="lazy"
+                  />
+                </motion.li>
               </div>
             </div>
             <div className="flex items-center justify-center gap-5">
@@ -119,9 +118,9 @@ const Hero = () => {
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <img
-                  src="https://skillicons.dev/icons?i=react"
+                  src="https://skillicons.dev/icons?i=express"
                   loading="lazy"
-                  className="h-[3rem] md:h-[3.2rem] cursor-pointe"
+                  className="h-[3rem] md:h-[3.2rem] cursor-pointer"
                 />
               </motion.li>
               <motion.li
@@ -137,28 +136,19 @@ const Hero = () => {
               <motion.li
                 whileHover={{ scale: 1.1, originX: 0 }}
                 transition={{ type: "spring", stiffness: 300 }}
+                className="relative"
               >
                 <img
-                  src="https://skillicons.dev/icons?i=nodejs"
-                  className="h-[3rem] md:h-[3.2rem] cursor-pointer"
+                  src="https://skillicons.dev/icons?i=mongodb"
                   loading="lazy"
-                />
-              </motion.li>
-              <motion.li
-                whileHover={{ scale: 1.1, originX: 0 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <img
-                  src="https://skillicons.dev/icons?i=ts"
                   className="h-[3rem] md:h-[3.2rem] cursor-pointer"
-                  loading="lazy"
                 />
               </motion.li>
             </div>
           </ul>
         </div>
       </div>
-    </section>
+    </WrapperContainer>
   );
 };
 

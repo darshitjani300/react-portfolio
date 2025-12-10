@@ -1,13 +1,11 @@
 import { TbMap2 } from "react-icons/tb";
 import { AiOutlineMail } from "react-icons/ai";
+import WrapperContainer from "../utils/WrapperContainer";
 
 const Contact = () => {
   return (
-    <section
-      id="contact"
-      className="bg-white px-2 py-14 md:px-10 md:py-16 xl:px-52 xl:py-20"
-    >
-      <div className="flex flex-col md:flex-col md:items-start justify-center items-center gap-2 text-center pb-10">
+    <WrapperContainer id="contact" classes="bg-white py-14 md:py-16 xl:py-20">
+      <div className="flex flex-col md:flex-col md:items-start justify-center items-center gap-2 text-center pb-10 scroll-mt-20">
         <h1 className="text-[1.1rem] font-bold text-[#147EFB]">CONTACT</h1>
         <h2 className="text-[1.6rem] font-bold leading-9">
           Feel free to reach out 👇
@@ -42,7 +40,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </section>
+    </WrapperContainer>
   );
 };
 

@@ -1,10 +1,12 @@
+import WrapperContainer from "../utils/WrapperContainer";
+
 const About = () => {
   return (
-    <section
-      id="about"
-      className="bg-white w-full py-5 lg:px-5 lg:py-20 xl:px-40 px-5"
+    <WrapperContainer
+      id={"about"}
+      classes="scroll-mt-20 w-full py-5 lg:py-20 2xl:mb-40 min-h-[calc(100vh-64px)]"
     >
-      <div className="py-12 flex items-center flex-col lg:grid lg:grid-cols-2 lg:justify-between">
+      <div className="py-12 bg-white rounded-2xl px-5 flex items-center flex-col lg:grid lg:grid-cols-2 lg:justify-between">
         <div className="relative sm:h-[350px] 2xl:justify-self-center sm:w-[420px] px-3">
           <img
             src="main.png"
@@ -48,7 +50,7 @@ const About = () => {
           </p>
         </div>
       </div>
-    </section>
+    </WrapperContainer>
   );
 };
 
