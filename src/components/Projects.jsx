@@ -1,11 +1,13 @@
-import React from "react";
 import { IoMdOpen } from "react-icons/io";
 import { FiGithub } from "react-icons/fi";
 import { motion } from "framer-motion";
 
 const Projects = () => {
   return (
-    <div className="flex flex-col py-5 md:py-10 px-2 sm:px-12 md:px-20 lg:px-12 xl:px-52 ">
+    <section
+      id="project"
+      className="flex flex-col py-5 md:py-10 px-2 sm:px-12 md:px-20 lg:px-12 xl:px-52 "
+    >
       <div className="flex flex-col sm:items-start justify-center items-center gap-3 text-center">
         <h1 className="text-[1rem] font-bold text-[#147EFB] leading-5">
           PORTFOLIO
@@ -17,7 +19,7 @@ const Projects = () => {
           <div className="grid sm:gap-20 grid-rows-2 xl:grid-rows-1 grid-cols-1">
             <div className="flex bg-white shadow-md rounded-xl flex-col lg:grid lg:grid-cols-2 lg:items-center gap-2 p-4 sm:p-10">
               <motion.a
-                whileHover={{ scale: 0.9 }}
+                whileHover={{ scale: 0.9, transition: { duration: 0.3 } }}
                 href="https://rental-car300.netlify.app"
                 target="_blank"
                 className="w-full"
@@ -71,7 +73,7 @@ const Projects = () => {
             </div>
             <div className="flex bg-white shadow-md rounded-xl flex-col lg:grid lg:grid-cols-2 items-center gap-2 p-4 sm:p-10">
               <motion.a
-                whileHover={{ scale: 0.9 }}
+                whileHover={{ scale: 0.9, transition: { duration: 0.3 } }}
                 href="https://gymnite.netlify.app/"
                 target="_blank"
                 className="w-full"
@@ -127,7 +129,7 @@ const Projects = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
