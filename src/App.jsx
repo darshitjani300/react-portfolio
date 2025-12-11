@@ -2,14 +2,14 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
-import NavigationBar from "./components/NavigationBar";
+import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
-import FloatingNav from "./utils/FloatingNav";
+import FloatingNavbar from "./utils/FloatingNavbar";
 
 function App() {
   return (
     <>
-      <NavigationBar />
+      <Navbar />
       <Hero />
       <About />
       <Projects />
@@ -17,7 +17,7 @@ function App() {
         <Contact />
         <Footer />
       </div>
-      <FloatingNav />
+      <FloatingNavbar />
     </>
   );
 }

@@ -2,8 +2,9 @@ import { useContext } from "react";
 import WrapperContainer from "../utils/WrapperContainer";
 import { MdOutlineDarkMode, MdLightMode } from "react-icons/md";
 import { ThemeContext } from "../context/ThemeContext";
+import scrollToSection from "../helper/Scroller";
 
-const NavigationBar = () => {
+const Navbar = () => {
   const { theme, setTheme } = useContext(ThemeContext);
 
   const toggleSwitch = () => {
@@ -73,4 +74,4 @@ const NavigationBar = () => {
   );
 };
 
-export default NavigationBar;
+export default Navbar;

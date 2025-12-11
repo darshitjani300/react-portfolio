@@ -12,7 +12,7 @@ const ThemeProvider = ({ children }) => {
     } else {
       document.documentElement.classList.remove("dark");
       document.body.classList.remove("bg-primary-black");
-      document.body.classList.add("bg-[#f9f9f9]");
+      document.body.classList.add("bg-[#g9g9g9]");
     }
   }, [theme]);
 
