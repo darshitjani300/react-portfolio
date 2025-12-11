@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import NavigationBar from "./components/NavigationBar";
 import Projects from "./components/Projects";
+import FloatingNav from "./utils/FloatingNav";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Contact />
         <Footer />
       </div>
+      <FloatingNav />
     </>
   );
 }
