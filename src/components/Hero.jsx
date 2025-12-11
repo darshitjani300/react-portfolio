@@ -33,21 +33,21 @@ const Hero = () => {
           <a href="https://www.linkedin.com/in/darshit-jani/" target="_blank">
             <PiLinkedinLogoBold
               size="1.6rem"
-              className="hover:text-[#147efb] ease-in-out cursor-pointer duration-[0.3s]"
+              className="hover:text-[#147efb] ease-in-out duration-[0.3s]"
             />
           </a>
 
           <a href="https://github.com/darshitjani300" target="_blank">
             <FiGithub
               size="1.6rem"
-              className="hover:text-[#147efb] ease-in-out cursor-pointer duration-[0.3s]"
+              className="hover:text-[#147efb] ease-in-out duration-[0.3s]"
             />
           </a>
 
           <a href="https://x.com/darshit_life1" target="_blank">
             <RiTwitterXFill
               size="1.6rem"
-              className="hover:text-[#147efb] ease-in-out cursor-pointer duration-[0.3s]"
+              className="hover:text-[#147efb] ease-in-out duration-[0.3s]"
             />
           </a>
         </div>
@@ -56,7 +56,7 @@ const Hero = () => {
           <h1 className="text-[#2d2e32] font-semibold text-[1rem] border-b-[2px] lg:border-b-0 lg:border-r-[2px] border-black pb-2">
             Tech Stack{" "}
           </h1>
-          <ul className="flex flex-col items-center justify-center  pb-5 gap-5 w-full">
+          <ul className="flex flex-col items-center justify-center pb-5 gap-5 w-full">
             <div className="flex items-center justify-center gap-5">
               <div className="flex items-center gap-5">
                 <motion.li
@@ -66,7 +66,7 @@ const Hero = () => {
                   <img
                     src="https://skillicons.dev/icons?i=js"
                     loading="lazy"
-                    className="h-[3rem] md:h-[3.2rem] cursor-pointer"
+                    className="h-[3rem] md:h-[3.2rem]"
                   />
                 </motion.li>
 
@@ -76,7 +76,7 @@ const Hero = () => {
                 >
                   <img
                     src="https://skillicons.dev/icons?i=ts"
-                    className="h-[3rem] md:h-[3.2rem] cursor-pointer"
+                    className="h-[3rem] md:h-[3.2rem]"
                     loading="lazy"
                   />
                 </motion.li>
@@ -97,7 +97,7 @@ const Hero = () => {
                   <img
                     src="https://skillicons.dev/icons?i=nextjs"
                     loading="lazy"
-                    className="h-[3rem] md:h-[3.2rem] cursor-pointer"
+                    className="h-[3rem] md:h-[3.2rem]"
                   />
                 </motion.li>
 
@@ -107,7 +107,7 @@ const Hero = () => {
                 >
                   <img
                     src="https://skillicons.dev/icons?i=nodejs"
-                    className="h-[3rem] md:h-[3.2rem] cursor-pointer"
+                    className="h-[3rem] md:h-[3.2rem]"
                     loading="lazy"
                   />
                 </motion.li>
@@ -121,7 +121,7 @@ const Hero = () => {
                 <img
                   src="https://skillicons.dev/icons?i=express"
                   loading="lazy"
-                  className="h-[3rem] md:h-[3.2rem] cursor-pointer"
+                  className="h-[3rem] md:h-[3.2rem]"
                 />
               </motion.li>
               <motion.li
@@ -130,7 +130,7 @@ const Hero = () => {
               >
                 <img
                   src="https://skillicons.dev/icons?i=postgres"
-                  className="h-[3rem] md:h-[3.2rem] cursor-pointer"
+                  className="h-[3rem] md:h-[3.2rem]"
                   loading="lazy"
                 />
               </motion.li>
@@ -142,7 +142,7 @@ const Hero = () => {
                 <img
                   src="https://skillicons.dev/icons?i=mongodb"
                   loading="lazy"
-                  className="h-[3rem] md:h-[3.2rem] cursor-pointer"
+                  className="h-[3rem] md:h-[3.2rem]"
                 />
               </motion.li>
             </div>

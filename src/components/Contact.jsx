@@ -22,7 +22,7 @@ const Contact = () => {
               className="text-[3rem] p-2 rounded-2xl shadow-xl"
               color="#147EFB"
             />
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col">
               <h1 className="font-bold text-[1.1rem]">Location</h1>
               <p className="text-[1rem] cursor-pointer text-[#767676] hover:text-blue-500 duration-150 ease-in">
                 Ahmedabad, India
@@ -34,7 +34,7 @@ const Contact = () => {
               className="text-[3rem] p-2 rounded-2xl shadow-xl"
               color="#147EFB"
             />
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col">
               <h1 className="font-bold text-[1.1rem]">Mail</h1>
               <a
                 href="mailto:darshitdeveloper300@gmail.com"

@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import WrapperContainer from "../utils/WrapperContainer";
+import { MdOutlineDarkMode, MdLightMode } from "react-icons/md";
+import { ThemeContext } from "../context/ThemeContext";
 
 const NavigationBar = () => {
   const [showNav, setShowNav] = useState(false);
+  const { theme, setTheme } = useContext(ThemeContext);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -12,6 +15,14 @@ const NavigationBar = () => {
         behavior: "smooth",
       });
       setShowNav(false);
+    }
+  };
+
+  const toggleSwitch = () => {
+    if (theme == "light") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
     }
   };
 
@@ -78,6 +89,16 @@ const NavigationBar = () => {
             className="cursor-pointer hover:text-[#147efb] ease-in-out duration-[0.4s]"
           >
             Contact
+          </li>
+          <li
+            className="flex justify-center items-center cursor-pointer hover:text-[#147efb] ease-in-out duration-[0.4s] rounded-full mb-0.5"
+            onClick={toggleSwitch}
+          >
+            {theme == "dark" ? (
+              <MdLightMode size={22} />
+            ) : (
+              <MdOutlineDarkMode size={22} />
+            )}
           </li>
         </ul>
       </WrapperContainer>
