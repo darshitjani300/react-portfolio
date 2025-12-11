@@ -4,9 +4,9 @@ const About = () => {
   return (
     <WrapperContainer
       id={"about"}
-      classes="scroll-mt-20 w-full py-5 lg:py-20 2xl:mb-40 min-h-[calc(100vh-64px)]"
+      classes="scroll-mt-20 w-full py-5 lg:py-20 2xl:mb-40 min-h-[calc(100vh-64px)] flex flex-col justify-center items-center"
     >
-      <div className="py-12 bg-white rounded-2xl px-5 flex items-center flex-col lg:grid lg:grid-cols-2 lg:justify-between">
+      <div className="py-12 bg-white dark:bg-primary-black border-2 border-transparent dark:border-2 dark:border-primary-white rounded-2xl px-5 flex items-center flex-col lg:grid lg:grid-cols-2 lg:justify-between">
         <div className="relative sm:h-[350px] 2xl:justify-self-center sm:w-[420px] px-3">
           <img
             src="main.png"
@@ -15,7 +15,7 @@ const About = () => {
             className="h-full w-full object-cover rounded-xl"
           />
           <div className="hidden sm:block absolute bottom-[-30px] right-[-55px]">
-            <div className="hidden sm:block bg-white h-[135px] w-[135px] z-[40] relative ml-10 rounded-[50%]">
+            <div className="hidden sm:block bg-white h-[135px] w-[135px] z-40 relative ml-10 rounded-[50%]">
               <img
                 src="circle.png"
                 loading="lazy"
@@ -35,10 +35,10 @@ const About = () => {
           <h3 className="text-[1rem] sm:text-[1.1rem] lg:w-full lg:mt-0 font-bold text-blue-500 mt-10">
             ABOUT ME
           </h3>
-          <h1 className="font-bold text-[#2d2e32] w-full text-[1.6rem] sm:px-3 lg:px-0 leading-9">
+          <h1 className="font-bold text-[#2d2e32] w-full text-[1.6rem] sm:px-3 lg:px-0 leading-9 dark:text-primary-gray">
             A dedicated Full Stack Developer based in Ahmedabad, India 📍
           </h1>
-          <p className="text-[1rem] text-[#767676]">
+          <p className="text-[1rem] text-[#767676] dark:text-[#cfcccc]">
             As a Web Developer, I bring strong expertise in HTML, CSS,
             JavaScript, Tailwind, and React, along with full-stack experience
             using the MERN stack. I excel at designing and building responsive,

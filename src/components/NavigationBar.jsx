@@ -1,60 +1,38 @@
-import { useState } from "react";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { useContext } from "react";
 import WrapperContainer from "../utils/WrapperContainer";
+import { MdOutlineDarkMode, MdLightMode } from "react-icons/md";
+import { ThemeContext } from "../context/ThemeContext";
 
 const NavigationBar = () => {
-  const [showNav, setShowNav] = useState(false);
+  const { theme, setTheme } = useContext(ThemeContext);
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-      });
-      setShowNav(false);
+  const toggleSwitch = () => {
+    if (theme == "light") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
     }
   };
 
   return (
-    <nav className="sticky h-20 top-0 left-0 w-full bg-white shadow-md z-50">
-      <WrapperContainer classes="flex justify-between items-center py-6">
+    <nav className="lg:sticky h-14 xl:h-20 top-0 left-0 flex items-center w-full bg-white dark:bg-primary-black shadow-md z-50">
+      <WrapperContainer classes="flex justify-between items-center">
         <h1
-          className="cursor-pointer font-bold text-[#2d2e32] text-[1.2rem] sm:text-[1.4rem] lg:text-[1.3rem]"
+          className="cursor-pointer font-bold text-[#2d2e32] text-[1.2rem] sm:text-[1.4rem] lg:text-[1.3rem] dark:text-primary-white"
           onClick={() => scrollToSection("home")}
         >
           Darshit.dev
         </h1>
 
-        <AiOutlineMenu
-          className="lg:hidden text-[25px] sm:text-[30px]"
-          onClick={() => setShowNav(!showNav)}
-        />
+        <button onClick={toggleSwitch} className="cursor-pointer lg:hidden">
+          {theme == "dark" ? (
+            <MdLightMode size={22} color="white" />
+          ) : (
+            <MdOutlineDarkMode size={22} />
+          )}
+        </button>
 
-        {showNav && (
-          <div className="h-screen w-screen fixed top-0 left-0 z-50 bg-white text-black">
-            <AiOutlineClose
-              size={30}
-              className=" w-full my-10"
-              onClick={() => setShowNav(!showNav)}
-            />
-            <ul className="w-[50%] text-center mx-auto flex gap-5 flex-col font-semibold">
-              <li className="cursor-pointer hover:text-[#147efb] ease-in-out duration-[0.4s]">
-                Home
-              </li>
-              <li className="cursor-pointer hover:text-[#147efb] ease-in-out duration-[0.4s]">
-                About
-              </li>
-              <li className="cursor-pointer hover:text-[#147efb] ease-in-out duration-[0.4s]">
-                Work
-              </li>
-              <li className="cursor-pointer hover:text-[#147efb] ease-in-out duration-[0.4s]">
-                Contact
-              </li>
-            </ul>
-          </div>
-        )}
-
-        <ul className="hidden lg:text-[1.1rem] xl:text-[1rem] text-[#2d2e32] lg:flex font-semibold gap-5 pr-3">
+        <ul className="hidden lg:text-[1.1rem] xl:text-[1rem] text-[#2d2e32] lg:flex font-semibold gap-5 pr-3 dark:text-primary-white">
           <li
             onClick={() => scrollToSection("home")}
             className="cursor-pointer hover:text-[#147efb] ease-in-out duration-[0.4s]"
@@ -78,6 +56,16 @@ const NavigationBar = () => {
             className="cursor-pointer hover:text-[#147efb] ease-in-out duration-[0.4s]"
           >
             Contact
+          </li>
+          <li
+            className="flex justify-center items-center cursor-pointer hover:text-[#147efb] ease-in-out duration-[0.4s] rounded-full mb-0.5"
+            onClick={toggleSwitch}
+          >
+            {theme == "dark" ? (
+              <MdLightMode size={22} />
+            ) : (
+              <MdOutlineDarkMode size={22} />
+            )}
           </li>
         </ul>
       </WrapperContainer>

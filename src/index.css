@@ -1,14 +1,17 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+@theme {
+  --color-primary-black: #202020;
+  --color-primary-white: #f2f2f2;
+  --color-primary-gray: #d2d2d2;
+}
 
 body {
   font-family: "Poppins", sans-serif, system-ui, -apple-system,
     BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
     "Open Sans", "Helvetica Neue", sans-serif;
-  background-color: #f9f9f9;
   color: #2d2e32;
   scroll-behavior: smooth;
 }
@@ -20,6 +23,7 @@ body {
 .imageSpin {
   animation: spin 8s linear infinite;
 }
+
 @keyframes spin {
   from {
     transform: translate(-50%, -50%) rotate(0deg);
