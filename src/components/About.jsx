@@ -4,7 +4,7 @@ const About = () => {
   return (
     <WrapperContainer
       id={"about"}
-      classes="scroll-mt-20 w-full py-5 lg:py-20 2xl:mb-40 min-h-[calc(100vh-64px)] flex flex-col justify-center items-center"
+      classes="md:scroll-mt-20 w-full py-5 lg:py-20 2xl:mb-40 min-h-[calc(100vh-64px)] flex flex-col justify-center items-center"
     >
       <div className="py-12 bg-white dark:bg-primary-black border-2 border-transparent dark:border-2 dark:border-primary-white rounded-2xl px-5 flex items-center flex-col lg:grid lg:grid-cols-2 lg:justify-between">
         <div className="relative sm:h-[350px] 2xl:justify-self-center sm:w-[420px] px-3">

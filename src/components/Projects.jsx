@@ -31,7 +31,7 @@ const Projects = () => {
   return (
     <WrapperContainer
       id="project"
-      classes="min-h-[calc(100vh-80px)] flex flex-col py-5 md:py-10 scroll-mt-20"
+      classes="min-h-[calc(100vh-80px)] flex flex-col py-5 md:py-10 md:scroll-mt-20"
     >
       <div className="flex flex-col sm:items-start justify-center items-center gap-3 text-center">
         <h1 className="text-[1rem] font-bold text-[#147EFB] leading-5">
