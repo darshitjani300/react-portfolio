@@ -12,15 +12,15 @@ const About = () => {
             src="main.png"
             alt="bg"
             loading="lazy"
-            className="h-full w-full object-cover rounded-xl"
+            className="h-full w-full object-cover rounded-xl border border-slate-200"
           />
           <div className="hidden sm:block absolute bottom-[-30px] right-[-55px]">
-            <div className="hidden sm:block bg-white h-[135px] w-[135px] z-40 relative ml-10 rounded-[50%]">
+            <div className="hidden sm:block bg-white h-[135px] w-[135px] z-40 relative ml-10 rounded-[50%] border border-slate-100">
               <img
                 src="circle.png"
                 loading="lazy"
                 alt="circle"
-                className="absolute h-[130px] left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] imageSpin"
+                className="absolute h-[130px] left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] imageSpin rounded-full p-0.5"
               />
               <img
                 src="circleinn.png"

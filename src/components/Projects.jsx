@@ -42,10 +42,10 @@ const Projects = () => {
         </h2>
         <div className="px-3 md:px-0 my-10">
           <div className="grid gap-5 sm:gap-20 grid-rows-2 xl:grid-rows-1 grid-cols-1">
-            {data.map((item, index) => {
+            {data?.map((item, index) => {
               return (
                 <div
-                  className="flex bg-white dark:bg-primary-black border-2 border-transparent dark:border-2 dark:border-primary-white shadow-md rounded-xl flex-col lg:grid lg:grid-cols-2 lg:items-center gap-2 p-4 sm:p-10"
+                  className="flex bg-white dark:bg-primary-black border border-slate-50 shadow-sm rounded-xl flex-col lg:grid lg:grid-cols-2 lg:items-center gap-2 p-4 sm:p-10 "
                   key={index}
                 >
                   <motion.a
