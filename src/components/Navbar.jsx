@@ -19,19 +19,11 @@ const Navbar = () => {
     <nav className="lg:sticky h-14 xl:h-20 top-0 left-0 flex items-center w-full bg-white dark:bg-primary-black shadow-md z-50">
       <WrapperContainer classes="flex justify-between items-center">
         <h1
-          className="cursor-pointer font-bold text-[#2d2e32] text-[1.2rem] sm:text-[1.4rem] lg:text-[1.3rem] dark:text-primary-white"
+          className="cursor-pointer font-bold text-[#2d2e32] text-xl sm:text-2xl lg:text-[1.3rem] dark:text-primary-white"
           onClick={() => scrollToSection("home")}
         >
           Darshit.dev
         </h1>
-
-        <button onClick={toggleSwitch} className="cursor-pointer lg:hidden">
-          {theme == "dark" ? (
-            <MdLightMode size={22} color="white" />
-          ) : (
-            <MdOutlineDarkMode size={22} />
-          )}
-        </button>
 
         <ul className="hidden lg:text-[1.1rem] xl:text-[1rem] text-[#2d2e32] lg:flex font-semibold gap-5 pr-3 dark:text-primary-white">
           <li
