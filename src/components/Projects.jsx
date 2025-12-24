@@ -12,7 +12,7 @@ const Projects = () => {
       description:
         "A car rental website is an online platform that allows users to rent cars for personal or business use. The website provides an interface for searching, comparing, and reserving cars.",
       link: "https://rental-car300.netlify.app",
-      github: "https://github.com/darshitjani300/rental-car",
+      github: "https://github.com/darshitjani300/react-rental-car",
       techStack: ["React", "Tailwind CSS"],
       socialBtns: [{ Github: <FiGithub /> }, { "Live Demo": <IoMdOpen /> }],
     },
@@ -22,7 +22,7 @@ const Projects = () => {
       subTitle: "SEPTEMBER 2023",
       description: `A GYMNITE website, with its focus on simplicity and clean design, along with a touch of Swipers, is a comprehensive resource for fitness information and products. This ensures an easy user experience and allows customers to find and purchase the products they need.`,
       link: "https://gym-ecom.netlify.app",
-      github: "https://github.com/darshitjani300/gym-ecom",
+      github: "https://github.com/darshitjani300/react-gym-ecom",
       techStack: ["React", "Tailwind CSS"],
       socialBtns: [{ Github: <FiGithub /> }, { "Live Demo": <IoMdOpen /> }],
     },
