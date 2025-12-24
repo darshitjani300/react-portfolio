@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
+import BackgroundMusic from "./helper/BackgroundMusic";
 import FloatingNavbar from "./utils/FloatingNavbar";
 
 function App() {
