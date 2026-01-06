@@ -5,7 +5,7 @@ const BackgroundMusic = () => {
 
   useEffect(() => {
     const music = musicRef.current;
-    music.volume = 0.2;
+    music.volume = 0.15;
     music.muted = true;
 
     const unLockMusic = () => {
