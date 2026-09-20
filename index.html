@@ -3,12 +3,101 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <title>Darshit Jani</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/photo.jpg" />
+
+    <!-- ===== Core SEO ===================================================== -->
+    <title>Darshit Jani — Full Stack Developer in Ahmedabad, India</title>
+    <meta
+      name="description"
+      content="Darshit Jani is a full stack developer in Ahmedabad, India with 1.5+ years building production web platforms — React, Next.js, Node.js, TypeScript, PostgreSQL and real-time systems. Available for freelance projects and full-time roles."
+    />
+    <link rel="canonical" href="https://darshitdev.vercel.app/" />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+    <meta name="author" content="Darshit Jani" />
+    <meta
+      name="keywords"
+      content="Darshit Jani, Darshit developer, Darshit Jani developer, Darshit Jani portfolio, full stack developer Ahmedabad, freelance web developer Ahmedabad, React developer India, Next.js developer, Node.js developer, MERN stack developer, hire full stack developer India"
+    />
+    <meta name="theme-color" content="#f5f5f3" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0a0c" media="(prefers-color-scheme: dark)" />
+
+    <!-- ===== Geographic / local SEO ======================================= -->
+    <meta name="geo.region" content="IN-GJ" />
+    <meta name="geo.placename" content="Ahmedabad, Gujarat, India" />
+    <meta name="geo.position" content="23.0225;72.5714" />
+    <meta name="ICBM" content="23.0225, 72.5714" />
+
+    <!-- ===== Identity (helps engines merge the profiles into one entity) === -->
+    <link rel="me" href="https://www.linkedin.com/in/darshit-jani/" />
+    <link rel="me" href="https://github.com/darshitjani300" />
+    <link rel="me" href="https://x.com/darshit_life1" />
+
+    <!-- ===== Open Graph =================================================== -->
+    <meta property="og:type" content="profile" />
+    <meta property="profile:first_name" content="Darshit" />
+    <meta property="profile:last_name" content="Jani" />
+    <meta property="profile:username" content="darshitjani300" />
+    <meta property="og:site_name" content="Darshit Jani" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:url" content="https://darshitdev.vercel.app/" />
+    <meta
+      property="og:title"
+      content="Darshit Jani — Full Stack Developer in Ahmedabad, India"
+    />
+    <meta
+      property="og:description"
+      content="Full stack developer with 1.5+ years building production web platforms — real-time multi-tenant systems, headless storefronts and AI pipelines."
+    />
+    <meta property="og:image" content="https://darshitdev.vercel.app/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Darshit Jani, full stack developer" />
+
+    <!-- ===== X / Twitter ================================================== -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@darshit_life1" />
+    <meta
+      name="twitter:title"
+      content="Darshit Jani — Full Stack Developer in Ahmedabad, India"
+    />
+    <meta
+      name="twitter:description"
+      content="Full stack developer with 1.5+ years building production web platforms — real-time multi-tenant systems, headless storefronts and AI pipelines."
+    />
+    <meta name="twitter:image" content="https://darshitdev.vercel.app/og-image.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Paint the right theme before first frame so there is no flash. -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var dark =
+            stored === "dark" ||
+            (!stored &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) document.documentElement.classList.add("dark");
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- The JSON-LD graph is injected here at build time from src/data/site.js
+         (see the seo() plugin in vite.config.js) so it can never drift from
+         the content on the page. -->
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-    <script src="./oneko.js"></script>
+    <script src="/oneko.js"></script>
   </body>
 </html>

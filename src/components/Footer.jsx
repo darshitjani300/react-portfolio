@@ -1,44 +1,32 @@
-import { PiLinkedinLogoBold } from "react-icons/pi";
-import { FiGithub } from "react-icons/fi";
-import { motion } from "framer-motion";
-import { RiTwitterXLine } from "react-icons/ri";
+import { profile } from "../data/site";
+import { IconArrowUp } from "../ui/icons";
+import scrollToSection from "../helper/Scroller";
 import WrapperContainer from "../utils/WrapperContainer";
 
-const Footer = () => {
-  return (
-    <footer className="bg-[#2d2e32]">
-      <WrapperContainer id="footer" classes="w-full ">
-        <div className="flex flex-col sm:flex-row justify-between gap-5 items-center text-center py-6">
-          <h1 className="text-white font-bold tracking-wide text-[1.1rem]">
-            Copyright © 2026. All rights are reserved
-          </h1>
-          <div className="flex gap-6 py-3">
-            <motion.a
-              whileHover={{ scale: 1.2 }}
-              href="https://www.linkedin.com/in/darshit-jani/"
-              target="_blank"
-            >
-              <PiLinkedinLogoBold className=" text-white text-[1.6rem]" />
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.2 }}
-              href="https://github.com/darshitjani300"
-              target="_blank"
-            >
-              <FiGithub className="text-[1.6rem] text-white" />
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.2 }}
-              href="https://x.com/darshit_life1"
-              target="_blank"
-            >
-              <RiTwitterXLine className="text-[1.6rem] text-white" />
-            </motion.a>
-          </div>
-        </div>
-      </WrapperContainer>
-    </footer>
-  );
-};
+const Footer = () => (
+  <footer className="border-t border-line pb-28 pt-10 lg:pb-10">
+    <WrapperContainer
+      isSection={false}
+      classes="flex flex-col items-center justify-between gap-6 text-center sm:flex-row sm:text-left"
+    >
+      <p className="font-mono text-[0.8rem] uppercase tracking-[0.14em] text-subtle">
+        © {new Date().getFullYear()} {profile.name}
+      </p>
+
+      <p className="font-mono text-[0.8rem] uppercase tracking-[0.14em] text-subtle">
+        Built with React, Tailwind &amp; a stubborn cat
+      </p>
+
+      <button
+        type="button"
+        onClick={() => scrollToSection("home")}
+        className="group inline-flex items-center gap-2 font-mono text-[0.8rem] uppercase tracking-[0.14em] text-subtle transition-colors duration-300 hover:text-fg"
+      >
+        Back to top
+        <IconArrowUp className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5" />
+      </button>
+    </WrapperContainer>
+  </footer>
+);
 
 export default Footer;

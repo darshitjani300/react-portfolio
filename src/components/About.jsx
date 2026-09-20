@@ -1,55 +1,91 @@
+import { profile, stack } from "../data/site";
+import useLocalTime from "../hooks/useLocalTime";
+import Reveal from "../ui/Reveal";
+import SectionHeader from "../ui/SectionHeader";
+import StackDiagram from "../ui/StackDiagram";
 import WrapperContainer from "../utils/WrapperContainer";
 
 const About = () => {
+  const time = useLocalTime(profile.timezone);
+
+  // With the experience section gone, this strip carries the whole career
+  // signal a recruiter scans for — four cells, no scrolling.
+  const facts = [
+    { label: "Based in", value: profile.location, note: `${time} local` },
+    { label: "Experience", value: profile.experience },
+    { label: "Currently", value: profile.currentRole },
+    { label: "Previously", value: profile.previously },
+  ];
+
   return (
-    <WrapperContainer
-      id={"about"}
-      classes="md:scroll-mt-20 w-full py-5 lg:py-20 2xl:mb-40 min-h-[calc(100vh-64px)] flex flex-col justify-center items-center"
-    >
-      <div className="py-12 bg-white dark:bg-primary-black border-2 border-transparent dark:border-2 dark:border-primary-white rounded-2xl px-5 flex items-center flex-col lg:grid lg:grid-cols-2 lg:justify-between">
-        <div className="relative sm:h-[350px] 2xl:justify-self-center sm:w-[420px] px-3">
-          <img
-            src="main.png"
-            alt="bg"
-            loading="lazy"
-            className="h-full w-full object-cover rounded-xl border border-slate-200"
-          />
-          <div className="hidden sm:block absolute bottom-[-30px] right-[-55px]">
-            <div className="hidden sm:block bg-white h-[135px] w-[135px] z-40 relative ml-10 rounded-[50%] border border-slate-100">
-              <img
-                src="circle.png"
-                loading="lazy"
-                alt="circle"
-                className="absolute h-[130px] left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] imageSpin rounded-full p-0.5"
-              />
-              <img
-                src="circleinn.png"
-                loading="lazy"
-                alt="innerCircle"
-                className="absolute h-[60px] left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]"
-              />
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col 2xl:justify-self-start 2xl:px-20 items-center text-center lg:text-start gap-3 px-2 sm:px-24 lg:px-0">
-          <h3 className="text-[1rem] sm:text-[1.1rem] lg:w-full lg:mt-0 font-bold text-blue-500 mt-10">
-            ABOUT ME
-          </h3>
-          <h1 className="font-bold text-[#2d2e32] w-full text-[1.6rem] sm:px-3 lg:px-0 leading-9 dark:text-primary-gray">
-            A dedicated Full Stack Developer based in Ahmedabad, India 📍
-          </h1>
-          <p className="text-[1rem] text-[#767676] dark:text-[#cfcccc]">
-            As a Web Developer, I bring strong expertise in HTML, CSS,
-            JavaScript, Tailwind, and React, along with full-stack experience
-            using the MERN stack. I excel at designing and building responsive,
-            high-quality web applications that deliver smooth and engaging user
-            experiences. I focus on writing clean, optimized code and leveraging
-            modern development tools to create scalable, maintainable solutions.
-            I’m also a collaborative team player who enjoys turning ideas into
-            polished, functional products.
-          </p>
+    <WrapperContainer id="about" classes="section-y">
+      <SectionHeader
+        index="01"
+        label="About"
+        title={
+          <>
+            A developer who cares about{" "}
+            <span className="serif-accent text-accent">the details</span>.
+          </>
+        }
+        aside="Open to freelance projects and full-time roles, remote or in Ahmedabad."
+      />
+
+      <div className="header-gap grid gap-10 lg:grid-cols-12 lg:gap-14">
+        <Reveal className="lg:col-span-5" y={32}>
+          <StackDiagram />
+        </Reveal>
+
+        <div className="lg:col-span-7">
+          <Reveal delay={0.08}>
+            <p className="text-[1.1625rem] leading-snug tracking-tight text-fg md:text-[1.3125rem]">
+              {profile.bio[0]}
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.16}>
+            <p className="mt-4 max-w-2xl text-[1.0125rem] leading-relaxed text-muted">
+              {profile.bio[1]}
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.24} className="mt-7 border-t border-line pt-6">
+            <p className="eyebrow">Toolkit</p>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {stack.map((tool) => (
+                <li
+                  key={tool}
+                  className="rounded-full border border-line px-3.5 py-1.5 text-[0.85rem] font-medium text-muted transition-colors duration-300 hover:border-line-strong hover:bg-accent-soft hover:text-fg"
+                >
+                  {tool}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
         </div>
       </div>
+
+      {/* Full-width strip: keeps the two columns balanced and puts the facts a
+          recruiter scans for on one line. */}
+      <Reveal
+        as="dl"
+        delay={0.1}
+        className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4"
+      >
+        {facts.map((fact) => (
+          <div key={fact.label} className="bg-bg px-5 py-4">
+            <dt className="eyebrow">{fact.label}</dt>
+            <dd className="mt-1.5 text-[0.9625rem] font-medium leading-snug tracking-tight text-fg">
+              {fact.value}
+              {fact.note ? (
+                <span className="mt-1 block font-mono text-[0.85rem] font-normal tracking-normal text-subtle">
+                  {fact.note}
+                </span>
+              ) : null}
+            </dd>
+          </div>
+        ))}
+      </Reveal>
     </WrapperContainer>
   );
 };
