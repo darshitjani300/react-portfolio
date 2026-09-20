@@ -1,23 +1,59 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useState } from "react";
 
-export const ThemeContext = createContext();
+export const ThemeContext = createContext(null);
+
+export const useTheme = () => useContext(ThemeContext);
+
+const readInitialTheme = () => {
+  if (typeof window === "undefined") return "light";
+  try {
+    const stored = window.localStorage.getItem("theme");
+    if (stored === "dark" || stored === "light") return stored;
+  } catch {
+    /* storage can be blocked — fall through to the system preference */
+  }
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+};
 
 const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(readInitialTheme);
 
   useEffect(() => {
-    if (theme == "dark") {
-      document.documentElement.classList.add("dark");
-      document.body.classList.add("dark:bg-primary-black");
-    } else {
-      document.documentElement.classList.remove("dark");
-      document.body.classList.remove("bg-primary-black");
-      document.body.classList.add("bg-[#g9g9g9]");
+    const root = document.documentElement;
+    root.classList.toggle("dark", theme === "dark");
+    root.style.colorScheme = theme;
+    try {
+      window.localStorage.setItem("theme", theme);
+    } catch {
+      /* ignore */
     }
   }, [theme]);
 
+  // Follow the OS until the visitor picks a side themselves.
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
+    const onChange = (event) => {
+      let stored = null;
+      try {
+        stored = window.localStorage.getItem("theme");
+      } catch {
+        /* ignore */
+      }
+      if (!stored) setTheme(event.matches ? "dark" : "light");
+    };
+    media.addEventListener("change", onChange);
+    return () => media.removeEventListener("change", onChange);
+  }, []);
+
+  const toggleTheme = useCallback(
+    () => setTheme((current) => (current === "dark" ? "light" : "dark")),
+    []
+  );
+
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );

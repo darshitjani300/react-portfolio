@@ -1,22 +1,15 @@
 export default function WrapperContainer({
   children,
-  classes,
+  classes = "",
   id,
   isSection = true,
 }) {
-  return isSection ? (
-    <section
-      className={`w-full max-w-[1600px] mx-auto px-5 md:px-10 lg:px-20 xl:px-40 ${classes}`}
-      id={id || ""}
-    >
+  const className = `w-full max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 xl:px-24 ${classes}`;
+  const Tag = isSection ? "section" : "div";
+
+  return (
+    <Tag className={className} id={id || undefined}>
       {children}
-    </section>
-  ) : (
-    <div
-      className={`w-full max-w-[1600px] mx-auto px-5 md:px-10 lg:px-20 xl:px-40 ${classes}`}
-      id={id || ""}
-    >
-      {children}
-    </div>
+    </Tag>
   );
 }
