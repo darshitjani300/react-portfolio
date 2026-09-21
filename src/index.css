@@ -1,5 +1,66 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------------------
+   Fonts, self-hosted.
+
+   These used to come from fonts.googleapis.com, which cost a render-blocking
+   stylesheet plus a second hop to fonts.gstatic.com before a single glyph
+   could be requested — ~930 ms of the mobile critical path. Serving the woff2
+   files from our own origin collapses that chain to one same-origin request
+   the preload in index.html starts during HTML parse.
+
+   Only the subsets the page actually uses are shipped: Inter roman (its
+   italic was never referenced), Instrument Serif italic only, and one
+   JetBrains Mono variable file that covers both 400 and 500. latin-ext is
+   kept because unicode-range means it is only fetched if such a glyph is
+   ever rendered.
+--------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/inter-latin-var.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/inter-latin-ext-var.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+    U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F,
+    U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/instrument-serif-italic-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url("/fonts/jetbrains-mono-latin-var.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ---------------------------------------------------------------------------
@@ -16,7 +77,7 @@
 
   --fg: #0e0e11;
   --fg-muted: #5d5d67;
-  --fg-subtle: #8e8e99;
+  --fg-subtle: #686874;
 
   --line: rgb(14 14 17 / 0.1);
   --line-strong: rgb(14 14 17 / 0.22);
@@ -46,7 +107,7 @@
 
   --fg: #f3f3f5;
   --fg-muted: #9e9eaa;
-  --fg-subtle: #6c6c78;
+  --fg-subtle: #858591;
 
   --line: rgb(255 255 255 / 0.1);
   --line-strong: rgb(255 255 255 / 0.24);

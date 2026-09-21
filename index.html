@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/photo.jpg" />
+    <link rel="apple-touch-icon" href="/img/photo-400.jpg" />
 
     <!-- ===== Core SEO ===================================================== -->
     <title>Darshit Jani — Full Stack Developer in Ahmedabad, India</title>
@@ -70,11 +70,29 @@
     />
     <meta name="twitter:image" content="https://darshitdev.vercel.app/og-image.jpg" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- ===== Critical resources ==========================================
+         The fonts are self-hosted now (see the @font-face block in
+         src/index.css), so there is no render-blocking stylesheet from
+         fonts.googleapis.com and no second hop to fonts.gstatic.com.
+
+         The hero portrait is the LCP element and lives inside a React
+         component, so the preloads below are what let the browser start both
+         it and the body face during HTML parse rather than after the bundle
+         has executed. -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="image"
+      imagesrcset="/img/photo-400.avif 400w, /img/photo-600.avif 600w, /img/photo-760.avif 760w"
+      imagesizes="(min-width: 1024px) 370px, min(340px, 92vw)"
+      type="image/avif"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/inter-latin-var.woff2"
+      crossorigin
     />
 
     <!-- Paint the right theme before first frame so there is no flash. -->
@@ -98,6 +116,28 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-    <script src="/oneko.js"></script>
+    <!-- The cat stays, but it is decoration: as a plain sync script it blocked
+         the parser for ~300 ms, and even deferred it competes for the main
+         thread while the page is still settling. Load it once the browser is
+         idle after load, so it costs the first paint nothing. -->
+    <script>
+      (function () {
+        var start = function () {
+          var s = document.createElement("script");
+          s.src = "/oneko.js";
+          s.async = true;
+          document.body.appendChild(s);
+        };
+        var queue = function () {
+          if ("requestIdleCallback" in window) {
+            requestIdleCallback(start, { timeout: 2000 });
+          } else {
+            setTimeout(start, 400);
+          }
+        };
+        if (document.readyState === "complete") queue();
+        else window.addEventListener("load", queue, { once: true });
+      })();
+    </script>
   </body>
 </html>

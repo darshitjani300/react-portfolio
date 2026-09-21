@@ -192,6 +192,46 @@ function buildFallback() {
 </div>`.trim();
 }
 
+
+/**
+ * The whole stylesheet is ~8 KB gzipped, and as a separate <link> it was the
+ * last render-blocking request on the page — a full round trip before the
+ * first paint. At this size it is cheaper to inline it into the HTML than to
+ * fetch it, so this drops the <link> and folds the CSS into a <style> tag.
+ *
+ * If the stylesheet ever grows past ~20 KB gzipped, go back to the external
+ * file (it is cacheable across navigations; inlined CSS is not).
+ */
+function inlineCss() {
+  return {
+    name: "inline-css",
+    apply: "build",
+    enforce: "post",
+    generateBundle(_options, bundle) {
+      const entry = Object.values(bundle).find(
+        (chunk) => chunk.type === "asset" && chunk.fileName.endsWith(".html")
+      );
+      if (!entry) return;
+
+      let html = entry.source;
+
+      for (const [fileName, asset] of Object.entries(bundle)) {
+        if (asset.type !== "asset" || !fileName.endsWith(".css")) continue;
+
+        const link = new RegExp(
+          `<link[^>]+href="[^"]*${fileName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"[^>]*>`
+        );
+        if (!link.test(html)) continue;
+
+        html = html.replace(link, `<style>${asset.source}</style>`);
+        delete bundle[fileName];
+      }
+
+      entry.source = html;
+    },
+  };
+}
+
 function seo() {
   return {
     name: "inject-seo",
@@ -213,5 +253,5 @@ function seo() {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss(), seo()],
+  plugins: [react(), tailwindcss(), seo(), inlineCss()],
 });
