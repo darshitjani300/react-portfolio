@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { clientWork, projects } from "../data/site";
 import { IconArrowUpRight, IconGithub } from "../ui/icons";
+import Picture from "../ui/Picture";
 import Reveal from "../ui/Reveal";
 import SectionHeader from "../ui/SectionHeader";
 import WrapperContainer from "../utils/WrapperContainer";
@@ -33,10 +34,15 @@ const ProjectRow = ({ project, index }) => {
           className="relative block overflow-hidden rounded-2xl border border-line bg-elev shadow-soft"
           aria-label={`Open ${project.title} in a new tab`}
         >
-          <img
-            src={project.image}
+          <Picture
+            name={project.imageName}
+            widths={[700, 1000, 1400]}
+            /* The shot sits in a 7-of-12 column inside the 1440px container,
+               which tops out around 708px — below lg it is the full column. */
+            sizes="(min-width: 1280px) 708px, (min-width: 1024px) 58vw, (min-width: 768px) calc(100vw - 5rem), calc(100vw - 3rem)"
             alt={`${project.title} — ${project.tagline}`}
-            loading="lazy"
+            width="1400"
+            height="875"
             className="aspect-[16/10] w-full object-cover object-top transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
           />
           <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />

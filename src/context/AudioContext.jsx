@@ -14,6 +14,13 @@ export const useAudio = () => useContext(AudioContext);
 const TARGET_VOLUME = 0.15;
 const FADE_MS = 1200;
 
+const TRACK = "/song.mp3";
+
+/** Points the element at the track the first time it is actually needed. */
+const attachSource = (audio) => {
+  if (!audio.getAttribute("src")) audio.src = TRACK;
+};
+
 const AudioProvider = ({ children }) => {
   const audioRef = useRef(null);
   const fadeGuardRef = useRef(null);
@@ -62,6 +69,7 @@ const AudioProvider = ({ children }) => {
     // Browsers block autoplay until the visitor interacts with the page.
     const unlock = () => {
       if (mutedByChoice) return;
+      attachSource(audio);
       audio.muted = false;
       audio
         .play()
@@ -89,6 +97,7 @@ const AudioProvider = ({ children }) => {
     if (!audio) return;
 
     if (audio.paused) {
+      attachSource(audio);
       audio.muted = false;
       audio
         .play()
@@ -114,7 +123,12 @@ const AudioProvider = ({ children }) => {
   return (
     <AudioContext.Provider value={{ playing, toggleSound }}>
       {children}
-      <audio ref={audioRef} src="/song.mp3" loop preload="auto" />
+      {/* Deliberately has no src, and preload="none". With the track wired up
+          here the browser queued all 2 MB of it during the first paint, which
+          on a throttled connection starved the hero image and pushed LCP past
+          17 s. attachSource() points this at the file on first interaction,
+          which is also the earliest a browser would let it play. */}
+      <audio ref={audioRef} loop preload="none" />
     </AudioContext.Provider>
   );
 };

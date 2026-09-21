@@ -94,6 +94,11 @@ export const capabilities = [
   },
 ];
 
+/**
+ * `imageName` is the stem of the responsive set in /public/img that
+ * <Picture> renders; `image` is a single concrete file for the JSON-LD
+ * graph, which wants one URL rather than a srcset.
+ */
 export const projects = [
   {
     title: "Ebookify",
@@ -102,7 +107,8 @@ export const projects = [
     tagline: "AI eBook creation platform",
     description:
       "An AI-powered eBook creation platform that helps users generate structured content and build complete eBooks through a guided, seamless workflow.",
-    image: "/ebook.png",
+    imageName: "ebook",
+    image: "/img/ebook-1400.jpg",
     link: "https://ebookify.vercel.app/",
     github: "https://github.com/darshitjani300/mern-ai-ebook-creator",
     tech: ["React", "Node.js", "MongoDB", "AI"],
@@ -114,7 +120,8 @@ export const projects = [
     tagline: "Real-time messaging",
     description:
       "A real-time chat application for instant one-to-one messaging — secure, low-latency communication with protected access and a smooth experience across devices.",
-    image: "/pingxo.png",
+    imageName: "pingxo",
+    image: "/img/pingxo-1400.jpg",
     link: "https://pingxo.vercel.app",
     github: "https://github.com/darshitjani300/mern-pingxo-frontend",
     tech: ["React", "Node.js", "MongoDB", "Real-time"],
@@ -126,7 +133,8 @@ export const projects = [
     tagline: "Booking experience",
     description:
       "An online rental platform where users search, compare and reserve cars for personal or business use, built around a fast browsing and booking flow.",
-    image: "/car-rental.png",
+    imageName: "car-rental",
+    image: "/img/car-rental-1400.jpg",
     link: "https://rental-car300.netlify.app",
     github: "https://github.com/darshitjani300/react-rental-car",
     tech: ["React", "Tailwind CSS"],
@@ -138,7 +146,8 @@ export const projects = [
     tagline: "Fitness storefront",
     description:
       "A fitness resource and storefront with a deliberately clean, simple design and swipeable product browsing, so customers can find and buy what they need quickly.",
-    image: "/gym-ecom.png",
+    imageName: "gym-ecom",
+    image: "/img/gym-ecom-1400.jpg",
     link: "https://gym-ecom.netlify.app",
     github: "https://github.com/darshitjani300/react-gym-ecom",
     tech: ["React", "Tailwind CSS", "Swiper"],

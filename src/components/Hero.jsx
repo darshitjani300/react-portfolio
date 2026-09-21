@@ -3,10 +3,17 @@ import { profile, socials } from "../data/site";
 import useLocalTime from "../hooks/useLocalTime";
 import scrollToSection from "../helper/Scroller";
 import Magnetic from "../ui/Magnetic";
+import Picture from "../ui/Picture";
 import RotatingBadge from "../ui/RotatingBadge";
 import WrapperContainer from "../utils/WrapperContainer";
 
 const EASE = [0.16, 1, 0.3, 1];
+
+/* Keep the delays below short. Every element in this stagger starts at
+   opacity 0, and whichever one is largest is the page's LCP candidate — it
+   cannot be measured until its delay has elapsed, on top of however long the
+   bundle took to download and execute. A delay here is paid twice: once by
+   the animation and once by the metric. */
 
 const HEADLINE = [
   [{ text: "Building" }, { text: "digital" }],
@@ -43,7 +50,7 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: EASE }}
+            transition={{ duration: 0.5, ease: EASE }}
             className="flex flex-wrap items-center gap-3"
           >
             {profile.available && (
@@ -80,8 +87,8 @@ const Hero = () => {
                       }
                       animate={{ y: 0, opacity: 1 }}
                       transition={{
-                        duration: 0.9,
-                        delay: 0.1 + wordIndex * 0.06,
+                        duration: 0.7,
+                        delay: 0.06 + wordIndex * 0.04,
                         ease: EASE,
                       }}
                     >
@@ -96,7 +103,7 @@ const Hero = () => {
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.55, ease: EASE }}
+            transition={{ duration: 0.6, delay: 0.22, ease: EASE }}
             className="mt-6 max-w-xl text-[1.0425rem] leading-relaxed text-muted md:text-[1.1125rem]"
           >
             {profile.intro}
@@ -105,7 +112,7 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.68, ease: EASE }}
+            transition={{ duration: 0.6, delay: 0.3, ease: EASE }}
             className="mt-8 flex flex-wrap items-center gap-3"
           >
             <Magnetic className="inline-block">
@@ -145,7 +152,7 @@ const Hero = () => {
           <motion.ul
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.85 }}
+            transition={{ duration: 0.6, delay: 0.38 }}
             className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-2"
           >
             {socials.map((social) => (
@@ -163,19 +170,24 @@ const Hero = () => {
           </motion.ul>
         </div>
 
+        {/* Moves and scales, but never fades: an element at opacity 0 is not
+            a paint the browser can measure, so fading the portrait in held
+            LCP open long after the file itself had arrived. */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.96, y: 24 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3, ease: EASE }}
+          initial={reduceMotion ? false : { scale: 0.96, y: 24 }}
+          animate={{ scale: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.12, ease: EASE }}
           className="relative mx-auto w-full max-w-[340px] lg:col-span-5 lg:ml-auto lg:mr-0 lg:max-w-[370px]"
         >
           <div className="group relative overflow-hidden rounded-[28px] border border-line bg-elev shadow-float">
-            <img
-              src="/photo.jpg"
+            <Picture
+              name="photo"
+              widths={[400, 600, 760]}
+              sizes="(min-width: 1024px) 370px, min(340px, 92vw)"
               alt={`${profile.name}, full stack developer`}
-              width="680"
-              height="820"
-              fetchPriority="high"
+              width="760"
+              height="950"
+              priority
               className="aspect-[4/5] w-full object-cover object-center transition-[transform,filter] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] md:grayscale md:group-hover:grayscale-0"
             />
             <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-5 pt-20">

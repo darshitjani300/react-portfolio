@@ -43,19 +43,28 @@ const Navbar = () => {
         <nav className="mx-auto flex h-14 w-full max-w-[1440px] items-center justify-between px-6 md:h-16 md:px-10 lg:px-16 xl:px-24">
           {/* A monogram, not a status dot — the pulsing dot that used to sit
               here borrowed the hero badge's "available for work" idiom and
-              read as a stray notification. */}
+              read as a stray notification.
+
+              The accessible name is built from the visible text rather than
+              an aria-label, because a label that omits the visible
+              "Darshit.dev" breaks voice control (WCAG 2.5.3, Label in Name):
+              "click Darshit dev" would match nothing. The monogram is hidden
+              as decoration and the purpose is appended for screen readers. */}
           <button
             type="button"
             onClick={() => scrollToSection("home")}
-            aria-label={`${profile.name} — back to top`}
             className="group flex items-center gap-2.5"
           >
-            <span className="grid h-8 w-8 shrink-0 place-items-center rounded-[10px] border border-line bg-elev font-mono text-[0.8rem] font-medium leading-none text-fg transition-colors duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-accent-fg">
+            <span
+              aria-hidden="true"
+              className="grid h-8 w-8 shrink-0 place-items-center rounded-[10px] border border-line bg-elev font-mono text-[0.8rem] font-medium leading-none text-fg transition-colors duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-accent-fg"
+            >
               DJ
             </span>
             <span className="text-[1.0125rem] font-semibold tracking-tight text-fg">
               {profile.handle}
             </span>
+            <span className="sr-only"> — back to top</span>
           </button>
 
           <ul className="hidden items-center gap-1 lg:flex">
