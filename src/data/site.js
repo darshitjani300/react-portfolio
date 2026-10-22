@@ -23,7 +23,7 @@ export const profile = {
   email: "darshitdeveloper300@gmail.com",
   resume: "/Darshit_Jani_Resume.pdf",
   experience: "2 years",
-  currentRole: "Backend Developer @ Mediaclock",
+  currentRole: "Backend Developer @ Media Clock",
   previously: "Traveltekpro · Conceptserve",
   availability: "Open to freelance projects and full-time roles",
   available: true,
@@ -32,7 +32,7 @@ export const profile = {
   intro:
     "Full stack developer with 2 years building and deploying production platforms — REST APIs, real-time systems on Socket.IO and FCM, and LLM features shipped to production — with Node.js, Express, TypeScript, React/Next.js, MongoDB and PostgreSQL.",
   bio: [
-    "I'm a full stack developer based in Ahmedabad, currently a Backend Developer at Mediaclock. Most of my work lives on the server: REST APIs with JWT and RBAC, Socket.IO chat, FCM push notifications, Redis caching and cron jobs, deployed on DigitalOcean with Nginx and PM2.",
+    "I'm a full stack developer based in Ahmedabad, currently a Backend Developer at Media Clock. Most of my work lives on the server: REST APIs with JWT and RBAC, Socket.IO chat, FCM push notifications, Redis caching and cron jobs, deployed on DigitalOcean with Nginx and PM2.",
     "I've shipped an AI audio pipeline to production on OpenAI Whisper, GPT-4o and Replicate, and on the frontend I build with React and Next.js. I'm currently learning RAG and AI agents.",
   ],
 };
@@ -113,7 +113,7 @@ export const stack = skills.flatMap((skill) => skill.items);
 export const experience = [
   {
     role: "Backend Developer",
-    company: "Mediaclock",
+    company: "Media Clock",
     location: "Ahmedabad (Remote)",
     period: "Feb 2026 – Present",
     points: [
@@ -186,7 +186,7 @@ export const capabilities = [
 export const work = [
   {
     title: "Shelynx",
-    company: "Mediaclock",
+    company: "Media Clock",
     link: "https://shelynx.com",
     tagline: "Order-aggregation platform",
     description:
@@ -199,7 +199,7 @@ export const work = [
   },
   {
     title: "Real Estate Platform",
-    company: "Mediaclock",
+    company: "Media Clock",
     tagline: "Property management, end to end",
     description: "A full-stack property management system, built end to end.",
     points: [
