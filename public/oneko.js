@@ -22,6 +22,14 @@
   let idleAnimationFrame = 0;
 
   const nekoSpeed = 10;
+
+  // Keep the cat below the fixed site header: parked up there it sat on top
+  // of the nav labels (it read as "🐱ontact"). Measured live because the
+  // header is shorter on small screens.
+  function minNekoY() {
+    const header = document.querySelector("header");
+    return (header ? header.getBoundingClientRect().bottom : 0) + 20;
+  }
   const spriteSets = {
     idle: [[-3, -3]],
     alert: [[-7, -3]],
@@ -123,6 +131,7 @@
     nekoEl.style.position = "fixed";
     nekoEl.style.pointerEvents = "none";
     nekoEl.style.imageRendering = "pixelated";
+    nekoPosY = Math.max(minNekoY(), nekoPosY);
     nekoEl.style.left = `${nekoPosX - 16}px`;
     nekoEl.style.top = `${nekoPosY - 16}px`;
     nekoEl.style.zIndex = 2147483647;
@@ -198,7 +207,7 @@
       if (nekoPosX < 32) {
         avalibleIdleAnimations.push("scratchWallW");
       }
-      if (nekoPosY < 32) {
+      if (nekoPosY <= minNekoY()) {
         avalibleIdleAnimations.push("scratchWallN");
       }
       if (nekoPosX > window.innerWidth - 32) {
@@ -244,7 +253,11 @@
   function frame() {
     frameCount += 1;
     const diffX = nekoPosX - mousePosX;
-    const diffY = nekoPosY - mousePosY;
+    const minY = minNekoY();
+    // Chase the cursor's shadow on the header's bottom edge rather than the
+    // cursor itself, so the cat sits still under the nav instead of running
+    // in place against the clamp.
+    const diffY = nekoPosY - Math.max(minY, mousePosY);
     const distance = Math.sqrt(diffX ** 2 + diffY ** 2);
 
     if (distance < nekoSpeed || distance < 48) {
@@ -274,7 +287,7 @@
     nekoPosY -= (diffY / distance) * nekoSpeed;
 
     nekoPosX = Math.min(Math.max(16, nekoPosX), window.innerWidth - 16);
-    nekoPosY = Math.min(Math.max(16, nekoPosY), window.innerHeight - 16);
+    nekoPosY = Math.min(Math.max(minY, nekoPosY), window.innerHeight - 16);
 
     nekoEl.style.left = `${nekoPosX - 16}px`;
     nekoEl.style.top = `${nekoPosY - 16}px`;
