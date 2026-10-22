@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { profile, socials } from "../data/site";
 import useLocalTime from "../hooks/useLocalTime";
 import scrollToSection from "../helper/Scroller";
+import { IconDownload } from "../ui/icons";
 import Magnetic from "../ui/Magnetic";
 import Picture from "../ui/Picture";
 import RotatingBadge from "../ui/RotatingBadge";
@@ -16,9 +17,9 @@ const EASE = [0.16, 1, 0.3, 1];
    the animation and once by the metric. */
 
 const HEADLINE = [
-  [{ text: "Building" }, { text: "digital" }],
-  [{ text: "products" }, { text: "that" }, { text: "feel" }],
-  [{ text: "effortless.", serif: true }],
+  [{ text: "Full" }, { text: "Stack" }],
+  [{ text: "Developer" }],
+  [{ text: "(MERN)", serif: true }],
 ];
 
 const Hero = () => {
@@ -54,12 +55,13 @@ const Hero = () => {
             className="flex flex-wrap items-center gap-3"
           >
             {profile.available && (
-              <span className="inline-flex items-center gap-2 rounded-full border border-line bg-elev/60 px-3 py-1.5 font-mono text-[0.8rem] uppercase tracking-[0.14em] text-muted backdrop-blur-sm">
+              <span className="inline-flex items-center gap-2 rounded-full border border-line bg-elev/60 px-3 py-1.5 font-mono text-[0.875rem] uppercase tracking-[0.08em] text-muted backdrop-blur-sm sm:text-[0.925rem] sm:tracking-[0.14em]">
                 <span className="relative flex h-1.5 w-1.5">
                   <span className="pulse-ring absolute inset-0 rounded-full bg-emerald-500" />
                   <span className="relative h-1.5 w-1.5 rounded-full bg-emerald-500" />
                 </span>
-                Available for work
+                Open to freelance &amp; full-time
+                <span className="hidden sm:inline"> roles</span>
               </span>
             )}
             <span className="eyebrow">
@@ -103,8 +105,17 @@ const Hero = () => {
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.18, ease: EASE }}
+            className="mt-5 font-mono text-[0.975rem] uppercase tracking-[0.12em] text-fg md:text-[0.9rem]"
+          >
+            {profile.headline}
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.22, ease: EASE }}
-            className="mt-6 max-w-xl text-[1.0425rem] leading-relaxed text-muted md:text-[1.1125rem]"
+            className="mt-5 max-w-xl text-[1.0425rem] leading-relaxed text-muted md:text-[1.1125rem]"
           >
             {profile.intro}
           </motion.p>
@@ -139,13 +150,14 @@ const Hero = () => {
             </Magnetic>
 
             <Magnetic className="inline-block">
-              <button
-                type="button"
-                onClick={() => scrollToSection("contact")}
+              <a
+                href={profile.resume}
+                download
                 className="inline-flex items-center gap-2 rounded-full border border-line-strong px-5 py-3 text-[0.9425rem] font-medium text-fg transition-colors duration-300 hover:bg-accent-soft"
               >
-                Start a project
-              </button>
+                <IconDownload className="h-4 w-4" />
+                Download resume
+              </a>
             </Magnetic>
           </motion.div>
 
@@ -161,7 +173,7 @@ const Hero = () => {
                   href={social.href}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="link-underline font-mono text-[0.8rem] uppercase tracking-[0.16em] text-subtle transition-colors duration-300 hover:text-fg"
+                  className="link-underline font-mono text-[0.925rem] uppercase tracking-[0.16em] text-subtle transition-colors duration-300 hover:text-fg"
                 >
                   {social.label}
                 </a>
@@ -184,7 +196,7 @@ const Hero = () => {
               name="photo"
               widths={[400, 600, 760]}
               sizes="(min-width: 1024px) 370px, min(340px, 92vw)"
-              alt={`${profile.name}, full stack developer`}
+              alt={`${profile.name}, ${profile.role}`}
               width="760"
               height="950"
               priority
@@ -192,7 +204,7 @@ const Hero = () => {
             />
             <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-5 pt-20">
               <div>
-                <p className="font-mono text-[0.8rem] uppercase tracking-[0.18em] text-white/75">
+                <p className="font-mono text-[0.925rem] uppercase tracking-[0.18em] text-white/75">
                   {profile.role}
                 </p>
                 <p className="mt-1 text-[1.1125rem] font-semibold tracking-tight text-white">

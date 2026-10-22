@@ -7,12 +7,12 @@ const LAYERS = [
   {
     label: "API",
     note: "Auth, RBAC, real-time, scheduled jobs",
-    items: ["Express", "TypeScript", "Socket.IO"],
+    items: ["Node.js", "Express", "TypeScript", "Socket.IO"],
   },
   {
     label: "Data",
     note: "Modelled around how the product gets used",
-    items: ["PostgreSQL", "Prisma", "Redis"],
+    items: ["MongoDB", "PostgreSQL", "Prisma", "Redis"],
   },
 ];
 
@@ -50,14 +50,14 @@ export default function StackDiagram() {
                 <p className="text-[0.96rem] font-semibold tracking-tight text-fg">
                   {layer.label}
                 </p>
-                <p className="mt-1 text-[0.85rem] leading-relaxed text-subtle">
+                <p className="mt-1 text-[0.975rem] leading-relaxed text-subtle">
                   {layer.note}
                 </p>
                 <ul className="mt-3 flex flex-wrap gap-1.5">
                   {layer.items.map((item) => (
                     <li
                       key={item}
-                      className="rounded-md border border-line px-1.5 py-1 font-mono text-[0.8rem] text-muted"
+                      className="rounded-md border border-line px-1.5 py-1 font-mono text-[0.925rem] text-muted"
                     >
                       {item}
                     </li>

@@ -2,11 +2,12 @@ import { motion } from "framer-motion";
 import { navLinks } from "../data/site";
 import useActiveSection from "../hooks/useActiveSection";
 import scrollToSection from "../helper/Scroller";
-import { IconGrid, IconHome, IconLayers, IconMail, IconUser } from "../ui/icons";
+import { IconBriefcase, IconGrid, IconHome, IconLayers, IconMail, IconUser } from "../ui/icons";
 
 const ICONS = {
   home: IconHome,
   about: IconUser,
+  experience: IconBriefcase,
   work: IconGrid,
   services: IconLayers,
   contact: IconMail,

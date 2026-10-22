@@ -1,4 +1,4 @@
-import { profile, stack } from "../data/site";
+import { profile, skills } from "../data/site";
 import useLocalTime from "../hooks/useLocalTime";
 import Reveal from "../ui/Reveal";
 import SectionHeader from "../ui/SectionHeader";
@@ -8,8 +8,8 @@ import WrapperContainer from "../utils/WrapperContainer";
 const About = () => {
   const time = useLocalTime(profile.timezone);
 
-  // With the experience section gone, this strip carries the whole career
-  // signal a recruiter scans for — four cells, no scrolling.
+  // The career signal a recruiter scans for — four cells, no scrolling. The
+  // full history sits in the Experience section right below.
   const facts = [
     { label: "Based in", value: profile.location, note: `${time} local` },
     { label: "Experience", value: profile.experience },
@@ -28,7 +28,7 @@ const About = () => {
             <span className="serif-accent text-accent">the details</span>.
           </>
         }
-        aside="Open to freelance projects and full-time roles, remote or in Ahmedabad."
+        aside={`${profile.availability}, remote or in Ahmedabad.`}
       />
 
       <div className="header-gap grid gap-10 lg:grid-cols-12 lg:gap-14">
@@ -50,17 +50,36 @@ const About = () => {
           </Reveal>
 
           <Reveal delay={0.24} className="mt-7 border-t border-line pt-6">
-            <p className="eyebrow">Toolkit</p>
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {stack.map((tool) => (
-                <li
-                  key={tool}
-                  className="rounded-full border border-line px-3.5 py-1.5 text-[0.85rem] font-medium text-muted transition-colors duration-300 hover:border-line-strong hover:bg-accent-soft hover:text-fg"
+            <p className="eyebrow">Skills</p>
+            <dl className="mt-4 flex flex-col gap-4">
+              {skills.map((skill) => (
+                <div
+                  key={skill.group}
+                  className="grid gap-2 sm:grid-cols-[8.5rem_1fr] sm:gap-4"
                 >
-                  {tool}
-                </li>
+                  <dt className="pt-1.5 font-mono text-[0.925rem] uppercase tracking-[0.12em] text-subtle">
+                    {skill.group}
+                  </dt>
+                  <dd>
+                    <ul className="flex flex-wrap gap-2">
+                      {skill.items.map((tool) => (
+                        <li
+                          key={tool}
+                          className="rounded-full border border-line px-3.5 py-1.5 text-[0.975rem] font-medium text-muted transition-colors duration-300 hover:border-line-strong hover:bg-accent-soft hover:text-fg"
+                        >
+                          {tool}
+                        </li>
+                      ))}
+                      {skill.learning ? (
+                        <li className="rounded-full border border-dashed border-line-strong px-3.5 py-1.5 text-[0.975rem] font-medium text-subtle">
+                          Learning: {skill.learning}
+                        </li>
+                      ) : null}
+                    </ul>
+                  </dd>
+                </div>
               ))}
-            </ul>
+            </dl>
           </Reveal>
         </div>
       </div>
@@ -78,7 +97,7 @@ const About = () => {
             <dd className="mt-1.5 text-[0.9625rem] font-medium leading-snug tracking-tight text-fg">
               {fact.value}
               {fact.note ? (
-                <span className="mt-1 block font-mono text-[0.85rem] font-normal tracking-normal text-subtle">
+                <span className="mt-1 block font-mono text-[0.975rem] font-normal tracking-normal text-subtle">
                   {fact.note}
                 </span>
               ) : null}

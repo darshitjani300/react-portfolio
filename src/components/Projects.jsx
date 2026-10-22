@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { clientWork, projects } from "../data/site";
+import { sideProjects, work } from "../data/site";
 import { IconArrowUpRight, IconGithub } from "../ui/icons";
 import Picture from "../ui/Picture";
 import Reveal from "../ui/Reveal";
@@ -46,7 +46,7 @@ const ProjectRow = ({ project, index }) => {
             className="aspect-[16/10] w-full object-cover object-top transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
           />
           <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-          <span className="pointer-events-none absolute bottom-5 right-5 flex translate-y-3 items-center gap-2 rounded-full bg-white/95 px-4 py-2 font-mono text-[0.8rem] uppercase tracking-[0.14em] text-black opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0 group-hover:opacity-100">
+          <span className="pointer-events-none absolute bottom-5 right-5 flex translate-y-3 items-center gap-2 rounded-full bg-white/95 px-4 py-2 font-mono text-[0.925rem] uppercase tracking-[0.14em] text-black opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0 group-hover:opacity-100">
             Visit site
             <IconArrowUpRight className="h-3.5 w-3.5" />
           </span>
@@ -59,7 +59,7 @@ const ProjectRow = ({ project, index }) => {
         }`}
       >
         <div className="flex items-center gap-4">
-          <span className="font-mono text-[0.8rem] tracking-[0.16em] text-accent">
+          <span className="font-mono text-[0.925rem] tracking-[0.16em] text-accent">
             {String(index + 1).padStart(2, "0")}
           </span>
           <span className="h-px flex-1 bg-line" />
@@ -81,7 +81,7 @@ const ProjectRow = ({ project, index }) => {
           {project.tech.map((tech) => (
             <li
               key={tech}
-              className="rounded-full border border-line px-3 py-1.5 font-mono text-[0.8rem] uppercase tracking-[0.1em] text-subtle"
+              className="rounded-full border border-line px-3 py-1.5 font-mono text-[0.925rem] uppercase tracking-[0.1em] text-subtle"
             >
               {tech}
             </li>
@@ -113,26 +113,89 @@ const ProjectRow = ({ project, index }) => {
   );
 };
 
+const WorkCard = ({ item }) => (
+  <article className="flex h-full flex-col bg-bg p-6 lg:p-7">
+    <p className="eyebrow">Built at {item.company}</p>
+    <h3 className="mt-4 text-[1.3rem] font-semibold leading-tight tracking-tight text-fg">
+      {item.title}
+    </h3>
+    <p className="mt-1 serif-accent text-[1.1125rem] text-muted">
+      {item.tagline}
+    </p>
+    <p className="mt-3 text-[0.9625rem] leading-relaxed text-muted">
+      {item.description}
+    </p>
+    <ul className="mt-4 flex flex-col gap-2.5">
+      {item.points.map((point) => (
+        <li
+          key={point}
+          className="relative pl-4 text-[0.9325rem] leading-relaxed text-muted before:absolute before:left-0 before:top-[0.68em] before:h-1 before:w-1 before:rounded-full before:bg-accent"
+        >
+          {point}
+        </li>
+      ))}
+    </ul>
+    {/* mt-auto on a padded wrapper pins the tech list to the card's foot
+        while still guaranteeing a gap under the shortest copy. */}
+    <div className="mt-auto pt-6">
+      <ul className="flex flex-wrap gap-x-4 gap-y-2 border-t border-line pt-5">
+        {item.tech.map((tech) => (
+          <li
+            key={tech}
+            className="font-mono text-[0.925rem] uppercase tracking-[0.12em] text-subtle"
+          >
+            {tech}
+          </li>
+        ))}
+      </ul>
+      {item.link ? (
+        <a
+          href={item.link}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="mt-5 flex w-fit items-center gap-2 text-[0.9425rem] font-medium text-fg transition-colors duration-300 hover:text-accent"
+        >
+          <span className="link-underline">{item.link.replace("https://", "")}</span>
+          <IconArrowUpRight className="h-4 w-4" />
+        </a>
+      ) : null}
+    </div>
+  </article>
+);
+
 const Projects = () => {
   const [showAll, setShowAll] = useState(false);
-  const visible = showAll ? projects : projects.slice(0, PREVIEW_COUNT);
-  const hidden = projects.length - PREVIEW_COUNT;
+  const visible = showAll ? sideProjects : sideProjects.slice(0, PREVIEW_COUNT);
+  const hidden = sideProjects.length - PREVIEW_COUNT;
 
   return (
     <WrapperContainer id="work" classes="section-y">
       <SectionHeader
-        index="02"
+        index="03"
         label="Selected work"
         title={
           <>
-            Things I've designed, built{" "}
-            <span className="serif-accent text-accent">and shipped</span>.
+            Production platforms,{" "}
+            <span className="serif-accent text-accent">built in teams</span>.
           </>
         }
-        aside={`${projects.length} projects — each one built end to end, from interface to deployment.`}
+        aside="Company work, so the code is private — happy to walk through the architecture."
       />
 
-      <motion.div layout className="header-gap">
+      <Reveal className="header-gap grid gap-px overflow-hidden rounded-2xl border border-line bg-line lg:grid-cols-3">
+        {work.map((item) => (
+          <WorkCard key={item.title} item={item} />
+        ))}
+      </Reveal>
+
+      <Reveal className="mt-14 border-t border-line pt-7">
+        <p className="eyebrow">Side projects</p>
+        <p className="mt-3 max-w-xl text-[1.0125rem] leading-relaxed text-muted">
+          Built on my own time, each with a live demo and public source.
+        </p>
+      </Reveal>
+
+      <motion.div layout className="mt-6">
         <AnimatePresence initial={false}>
           {visible.map((project, index) => (
             <ProjectRow key={project.title} project={project} index={index} />
@@ -147,7 +210,7 @@ const Projects = () => {
             onClick={() => setShowAll((previous) => !previous)}
             className="group inline-flex items-center gap-3 rounded-full border border-line-strong px-5 py-3 text-[0.9125rem] font-medium text-fg transition-colors duration-300 hover:bg-accent-soft"
           >
-            {showAll ? "Show less" : `Show all ${projects.length} projects`}
+            {showAll ? "Show less" : `Show all ${sideProjects.length} side projects`}
             <svg
               viewBox="0 0 24 24"
               className={`h-4 w-4 transition-transform duration-500 ${
@@ -166,40 +229,6 @@ const Projects = () => {
           </button>
         </Reveal>
       )}
-
-      <Reveal className="mt-12 border-t border-line pt-7">
-        <p className="eyebrow">Client &amp; product work</p>
-        <p className="mt-3 max-w-xl text-[1.0125rem] leading-relaxed text-muted">
-          Built inside product teams, so there is no public repository — happy to
-          walk through the architecture.
-        </p>
-
-        <div className="mt-6 grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-2">
-          {clientWork.map((item) => (
-            <div key={item.title} className="bg-bg p-6 lg:p-7">
-              <h3 className="text-[1.1rem] font-semibold tracking-tight text-fg">
-                {item.title}
-              </h3>
-              <p className="mt-1 serif-accent text-[1.1125rem] text-muted">
-                {item.tagline}
-              </p>
-              <p className="mt-3 text-[0.9625rem] leading-relaxed text-muted">
-                {item.description}
-              </p>
-              <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
-                {item.tech.map((tech) => (
-                  <li
-                    key={tech}
-                    className="font-mono text-[0.8rem] uppercase tracking-[0.12em] text-subtle"
-                  >
-                    {tech}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </Reveal>
     </WrapperContainer>
   );
 };

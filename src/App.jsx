@@ -1,6 +1,7 @@
 import About from "./components/About";
 import Capabilities from "./components/Capabilities";
 import Contact from "./components/Contact";
+import Experience from "./components/Experience";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
@@ -19,11 +20,12 @@ function App() {
 
       <Navbar />
 
-      {/* Who I am, the proof, then what I can be hired for. Full employment
-          history and education live in the resume PDF, not on the page. */}
+      {/* Who I am, where I've worked, the proof, then what I can be hired
+          for. Every fact mirrors the resume PDF in /public. */}
       <main>
         <Hero />
         <About />
+        <Experience />
         <Projects />
         <Capabilities />
         <Contact />
