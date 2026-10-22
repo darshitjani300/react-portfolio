@@ -9,18 +9,18 @@ const Footer = () => (
       isSection={false}
       classes="flex flex-col items-center justify-between gap-6 text-center sm:flex-row sm:text-left"
     >
-      <p className="font-mono text-[0.8rem] uppercase tracking-[0.14em] text-subtle">
+      <p className="font-mono text-[0.925rem] uppercase tracking-[0.14em] text-subtle">
         © {new Date().getFullYear()} {profile.name}
       </p>
 
-      <p className="font-mono text-[0.8rem] uppercase tracking-[0.14em] text-subtle">
+      <p className="font-mono text-[0.925rem] uppercase tracking-[0.14em] text-subtle">
         Built with React, Tailwind &amp; a stubborn cat
       </p>
 
       <button
         type="button"
         onClick={() => scrollToSection("home")}
-        className="group inline-flex items-center gap-2 font-mono text-[0.8rem] uppercase tracking-[0.14em] text-subtle transition-colors duration-300 hover:text-fg"
+        className="group inline-flex items-center gap-2 font-mono text-[0.925rem] uppercase tracking-[0.14em] text-subtle transition-colors duration-300 hover:text-fg"
       >
         Back to top
         <IconArrowUp className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5" />

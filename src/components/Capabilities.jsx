@@ -6,7 +6,7 @@ import WrapperContainer from "../utils/WrapperContainer";
 const Capabilities = () => (
   <WrapperContainer id="services" classes="section-y">
     <SectionHeader
-      index="03"
+      index="04"
       label="Services"
       title={
         <>
@@ -24,7 +24,7 @@ const Capabilities = () => (
           className="flex h-full flex-col justify-between gap-8 bg-bg p-7 transition-colors duration-500 hover:bg-elev lg:p-8"
         >
           <div>
-            <span className="font-mono text-[0.8rem] tracking-[0.16em] text-accent">
+            <span className="font-mono text-[0.925rem] tracking-[0.16em] text-accent">
               {item.index}
             </span>
             <h3 className="mt-5 text-[1.15rem] font-semibold tracking-tight text-fg">
@@ -39,7 +39,7 @@ const Capabilities = () => (
             {item.tools.map((tool) => (
               <li
                 key={tool}
-                className="font-mono text-[0.8rem] uppercase tracking-[0.12em] text-subtle"
+                className="font-mono text-[0.925rem] uppercase tracking-[0.12em] text-subtle"
               >
                 {tool}
               </li>

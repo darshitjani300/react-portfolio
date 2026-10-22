@@ -1,5 +1,8 @@
 // Change `url` here if the site moves to a custom domain — canonical tags,
 // sitemap, Open Graph and the JSON-LD graph are all generated from it.
+//
+// Every fact on this page — titles, dates, numbers — comes from the resume
+// (public/Darshit_Jani_Resume.pdf). Update both together, never one alone.
 export const site = {
   url: "https://darshitdev.vercel.app",
   locale: "en_IN",
@@ -9,7 +12,8 @@ export const site = {
 export const profile = {
   name: "Darshit Jani",
   handle: "Darshit.dev",
-  role: "Full Stack Developer",
+  role: "Full Stack Developer (MERN)",
+  headline: "Node.js · React · Next.js · TypeScript | LLM Integration",
   location: "Ahmedabad, India",
   locality: "Ahmedabad",
   region: "Gujarat",
@@ -17,15 +21,19 @@ export const profile = {
   geo: { lat: 23.0225, lng: 72.5714 },
   timezone: "Asia/Kolkata",
   email: "darshitdeveloper300@gmail.com",
-  experience: "1.5+ years",
+  resume: "/Darshit_Jani_Resume.pdf",
+  experience: "2 years",
   currentRole: "Backend Developer @ Mediaclock",
   previously: "Traveltekpro · Conceptserve",
+  availability: "Open to freelance projects and full-time roles",
   available: true,
+  description:
+    "Darshit Jani is a Full Stack Developer (MERN) in Ahmedabad, India with 2 years of experience building production platforms with Node.js, Express, TypeScript, React/Next.js, MongoDB and PostgreSQL, including LLM features shipped to production.",
   intro:
-    "Full stack developer with 1.5+ years shipping production platforms — real-time multi-tenant systems, headless storefronts and AI pipelines, built with React, Next.js, Node and TypeScript.",
+    "Full stack developer with 2 years building and deploying production platforms — REST APIs, real-time systems on Socket.IO and FCM, and LLM features shipped to production — with Node.js, Express, TypeScript, React/Next.js, MongoDB and PostgreSQL.",
   bio: [
-    "I'm a full stack developer based in Ahmedabad, currently building backend systems at Mediaclock. I work across React, Next.js, Node and TypeScript, with PostgreSQL or MongoDB underneath depending on what the problem actually needs.",
-    "A lot of my work lives in the parts users never see — multi-tenant architecture, role-based access, real-time messaging over Socket.IO, background jobs and caching. I care about systems that stay fast under load, and code the next person can read without a tour.",
+    "I'm a full stack developer based in Ahmedabad, currently a Backend Developer at Mediaclock. Most of my work lives on the server: REST APIs with JWT and RBAC, Socket.IO chat, FCM push notifications, Redis caching and cron jobs, deployed on DigitalOcean with Nginx and PM2.",
+    "I've shipped an AI audio pipeline to production on OpenAI Whisper, GPT-4o and Replicate, and on the frontend I build with React and Next.js. I'm currently learning RAG and AI agents.",
   ],
 };
 
@@ -50,56 +58,178 @@ export const socials = [
 export const navLinks = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
   { id: "work", label: "Work" },
   { id: "services", label: "Services" },
   { id: "contact", label: "Contact" },
 ];
 
-export const stack = [
-  "TypeScript",
-  "JavaScript",
-  "React",
-  "Next.js",
-  "Node.js",
-  "Express",
-  "PostgreSQL",
-  "MongoDB",
-  "Prisma",
-  "Redis",
-  "Socket.IO",
-  "Firebase",
-  "Stripe",
-  "Tailwind CSS",
-  "Git",
+export const skills = [
+  { group: "Languages", items: ["JavaScript (ES6+)", "TypeScript"] },
+  {
+    group: "Backend",
+    items: [
+      "Node.js",
+      "Express.js",
+      "REST APIs",
+      "Socket.IO",
+      "JWT",
+      "RBAC",
+      "Stripe",
+      "Cron Jobs",
+    ],
+  },
+  {
+    group: "Frontend",
+    items: [
+      "React.js",
+      "Next.js (SSR/SSG)",
+      "React Native",
+      "Redux Toolkit",
+      "Recoil",
+      "Tailwind CSS",
+      "Bootstrap",
+      "Motion",
+    ],
+  },
+  {
+    group: "Databases",
+    items: ["MongoDB", "Mongoose", "PostgreSQL", "Prisma", "Redis", "Firebase (FCM)"],
+  },
+  {
+    group: "AI / LLM",
+    items: ["OpenAI API (Whisper, GPT-4o)", "Replicate", "AI chatbot integration"],
+    learning: "RAG and AI agents",
+  },
+  {
+    group: "DevOps & Tools",
+    items: ["DigitalOcean", "Nginx", "PM2", "SSL", "Git", "Figma", "SEO/AEO/GEO"],
+  },
+];
+
+/** Flat list for the JSON-LD graph, which wants plain skill names. */
+export const stack = skills.flatMap((skill) => skill.items);
+
+export const experience = [
+  {
+    role: "Backend Developer",
+    company: "Mediaclock",
+    location: "Ahmedabad (Remote)",
+    period: "Feb 2026 – Present",
+    points: [
+      "Shipped an AI audio pipeline to production using OpenAI Whisper, GPT-4o and Replicate.",
+      "Designed and built 30+ REST API endpoints with Express.js, JWT authentication and RBAC.",
+      "Built backends for a multi-tenant e-commerce platform (headless storefront APIs; Express.js, TypeScript, PostgreSQL/Prisma) and a parking reservation platform (MongoDB/Mongoose, Firebase), with RBAC and third-party API integrations.",
+      "Added real-time features with Socket.IO chat and FCM push notifications.",
+      "Developed multiple Next.js websites (SSR/SSG) scoring 90+ on Lighthouse.",
+      "Reduced stale data by 30% with cron-based cleanup jobs.",
+      "Deployed and maintained services on DigitalOcean with Nginx reverse proxy, SSL and PM2.",
+    ],
+  },
+  {
+    role: "Software Engineer",
+    company: "Traveltekpro IT Solutions",
+    location: "Ahmedabad",
+    period: "May 2024 – Jun 2025",
+    points: [
+      "Built responsive web apps with React.js, Next.js (SSG), TypeScript, Tailwind CSS and Bootstrap.",
+      "Converted Figma designs into reusable components and integrated REST APIs with Redux Toolkit and Recoil, cutting code duplication by 25%.",
+      "Implemented SEO, AEO and GEO for visibility across search and AI answer engines.",
+    ],
+  },
+  {
+    role: "React Developer (Internship)",
+    company: "Conceptserve Technologies",
+    location: "Ahmedabad",
+    period: "Dec 2023 – Mar 2024",
+    points: [
+      "Developed mobile and web apps with React Native and React.js in an Agile team.",
+    ],
+  },
+];
+
+export const education = [
+  {
+    degree: "Master of Computer Applications (Online)",
+    school: "Manipal University Jaipur",
+    period: "Aug 2025 – Present",
+  },
+  {
+    degree: "Bachelor of Commerce (B.Com)",
+    school: "Maharaja Sayajirao University of Baroda",
+    period: "Jul 2021 – Apr 2024",
+  },
 ];
 
 export const capabilities = [
   {
     index: "01",
-    title: "Frontend engineering",
-    body: "Interfaces built component-first in React and Next.js — sharp on every screen size, quick to load, and structured so your team can extend them later.",
-    tools: ["React", "Next.js", "TypeScript", "Redux Toolkit", "Tailwind CSS"],
+    title: "Backend & real-time",
+    body: "REST APIs with JWT authentication and role-based access, Socket.IO chat, FCM push notifications, Redis caching and cron jobs — deployed on DigitalOcean behind Nginx with PM2.",
+    tools: ["Node.js", "Express", "TypeScript", "MongoDB", "PostgreSQL", "Socket.IO", "Redis"],
   },
   {
     index: "02",
-    title: "Backend & real-time",
-    body: "APIs, authentication and live features that hold up under load: multi-tenant architecture, role-based access, scheduled jobs and caching.",
-    tools: ["Node.js", "Express", "PostgreSQL", "Prisma", "Socket.IO", "Redis"],
+    title: "LLM integration",
+    body: "LLM features shipped to production — an AI audio pipeline on OpenAI Whisper, GPT-4o and Replicate, plus an AI chatbot integrated into a real estate platform. Currently learning RAG and AI agents.",
+    tools: ["OpenAI", "Whisper", "GPT-4o", "Replicate"],
   },
   {
     index: "03",
-    title: "Integrations & AI",
-    body: "Payments, notifications and third-party services wired in end to end — plus AI features built on Whisper, GPT-4o and Replicate.",
-    tools: ["Stripe", "Firebase", "FCM", "OpenAI", "Replicate"],
+    title: "Frontend engineering",
+    body: "React and Next.js interfaces built from Figma designs, rendered with SSR/SSG and tuned to score 90+ on Lighthouse.",
+    tools: ["React", "Next.js", "React Native", "Redux Toolkit", "Tailwind CSS"],
+  },
+];
+
+/** Production work built for employers. Only Shelynx has a public URL. */
+export const work = [
+  {
+    title: "Shelynx",
+    company: "Mediaclock",
+    link: "https://shelynx.com",
+    tagline: "Order-aggregation platform",
+    description:
+      "Customers order SHEIN products through local agents, and admins consolidate those orders into bulk purchases.",
+    points: [
+      "Architected the shared Node.js/Express.js (TypeScript) backend for the mobile app, web portal and admin dashboard, with JWT and RBAC across customer, agent and admin roles.",
+      "Socket.IO live chat, FCM push notifications, Redis caching, cron automation, third-party APIs and AI features.",
+    ],
+    tech: ["Node.js", "Express.js", "TypeScript", "Socket.IO", "Redis", "FCM"],
+  },
+  {
+    title: "Real Estate Platform",
+    company: "Mediaclock",
+    tagline: "Property management, end to end",
+    description: "A full-stack property management system, built end to end.",
+    points: [
+      "Next.js/React/TypeScript frontend (Tailwind CSS, Motion, Redux Toolkit, Recoil).",
+      "Node.js/Express.js REST backend on MongoDB/Mongoose, with an integrated AI chatbot and cron jobs.",
+    ],
+    tech: ["Next.js", "React.js", "TypeScript", "Node.js", "Express.js", "MongoDB"],
+  },
+  {
+    title: "Flight Booking Platform",
+    company: "Traveltekpro",
+    tagline: "End-to-end travel portal",
+    description:
+      "A travel portal covering search, listing, booking and confirmation.",
+    points: [
+      "Next.js, TypeScript and Tailwind CSS from Figma designs; debounced search and filters with Recoil.",
+      "Raised the Lighthouse score from 60 to 90 with SSG, code splitting and lazy loading.",
+    ],
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Recoil"],
   },
 ];
 
 /**
+ * Personal side projects, each with a live demo and public repo.
+ *
  * `imageName` is the stem of the responsive set in /public/img that
  * <Picture> renders; `image` is a single concrete file for the JSON-LD
  * graph, which wants one URL rather than a srcset.
  */
-export const projects = [
+export const sideProjects = [
   {
     title: "Ebookify",
     year: "2025",
@@ -136,7 +266,7 @@ export const projects = [
     imageName: "car-rental",
     image: "/img/car-rental-1400.jpg",
     link: "https://rental-car300.netlify.app",
-    github: "https://github.com/darshitjani300/react-rental-car",
+    github: "https://github.com/darshitjani300/react-car-rental",
     tech: ["React", "Tailwind CSS"],
   },
   {
@@ -151,23 +281,5 @@ export const projects = [
     link: "https://gym-ecom.netlify.app",
     github: "https://github.com/darshitjani300/react-gym-ecom",
     tech: ["React", "Tailwind CSS", "Swiper"],
-  },
-];
-
-/** Production work built for employers — no public repo or live link. */
-export const clientWork = [
-  {
-    title: "Shelynx",
-    tagline: "Full stack application suite",
-    description:
-      "A multi-platform ecosystem — mobile app, web portal and admin dashboard — with RBAC and JWT auth, real-time Socket.IO features, push notifications, scheduled cron workflows and Redis caching to cut database load.",
-    tech: ["React Native", "Node.js", "Socket.IO", "Redis", "JWT"],
-  },
-  {
-    title: "Traveltek Flights",
-    tagline: "End-to-end travel booking",
-    description:
-      "A complete flight booking platform covering search, listing, booking and confirmation flows, with debounced dynamic filtering and Recoil state management to keep unnecessary re-renders down.",
-    tech: ["React", "Next.js", "Recoil", "REST APIs"],
   },
 ];

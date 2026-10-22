@@ -36,7 +36,7 @@ const Contact = () => {
       </div>
 
       <SectionHeader
-        index="04"
+        index="05"
         label="Contact"
         large
         title={
@@ -49,8 +49,8 @@ const Contact = () => {
 
       <Reveal delay={0.1} className="header-gap max-w-xl">
         <p className="text-[1.0425rem] leading-relaxed text-muted">
-          I'm available for freelance projects and full-time roles. Tell me what
-          you're working on — I usually reply within a day.
+          {profile.availability}. Tell me what you're working on — I usually
+          reply within a day.
         </p>
       </Reveal>
 
@@ -91,7 +91,7 @@ const Contact = () => {
           <p className="mt-2.5 text-[0.9625rem] font-medium text-fg">
             {profile.location}
           </p>
-          <p className="mt-1 font-mono text-[0.85rem] text-subtle">
+          <p className="mt-1 font-mono text-[0.975rem] text-subtle">
             {time} local
           </p>
         </div>
